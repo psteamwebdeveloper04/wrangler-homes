@@ -1,117 +1,648 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Privacy Policy - Wrangler Homes</title>
-    <link rel="stylesheet" href="css/style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy — Wrangler Homes</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700;9..144,900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;font-size:16px}
+html,body{overflow-x:hidden}
+
+:root{
+  --navy:      #0F1E38;
+  --blue:      #2C4B8A;
+  --blue-mid:  #3D6B9E;
+  --blue-lt:   #C8DCED;
+  --white:     #ffffff;
+  --off-white: #F7F9FC;
+  --red:       #B22234;
+  --red-dark:  #8B1A27;
+  --border-l:  rgba(44,75,138,0.12);
+  --border-m:  rgba(44,75,138,0.22);
+  --shadow:    rgba(15,30,56,0.12);
+  --f-head:    'Fraunces', serif;
+  --f-ui:      'Space Grotesk', system-ui, sans-serif;
+  --nav-h:     68px;
+  --sidebar-w: 252px;
+}
+
+body{background:var(--off-white);font-family:var(--f-ui);font-weight:500;color:var(--navy);-webkit-font-smoothing:antialiased}
+
+/* scrollbar */
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-track{background:var(--blue-lt)}
+::-webkit-scrollbar-thumb{background:var(--blue-mid);border-radius:3px}
+
+/* grain */
+#grain{position:fixed;inset:0;pointer-events:none;z-index:9000;opacity:.018;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 600 600' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='f'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='600' height='600' filter='url(%23f)'/%3E%3C/svg%3E");
+  background-size:200px;mix-blend-mode:multiply}
+
+/* ── NAV ── */
+#nav{
+  position:fixed;top:0;left:0;right:0;z-index:800;
+  height:var(--nav-h);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 clamp(18px,4vw,64px);
+  background:rgba(255,255,255,.95);
+  backdrop-filter:blur(18px);
+  border-bottom:1px solid var(--border-m);
+  transition:box-shadow .3s;
+}
+#nav.scrolled{box-shadow:0 2px 26px var(--shadow)}
+
+.nav-brand{text-decoration:none;display:flex;flex-direction:column;line-height:1}
+.nav-brand-top{font-family:var(--f-head);font-weight:900;font-size:clamp(1rem,1.4vw,1.32rem);letter-spacing:3px;color:var(--navy)}
+.nav-brand-top span{color:var(--red)}
+.nav-brand-bot{font-family:var(--f-ui);font-weight:300;font-size:clamp(.44rem,.58vw,.6rem);letter-spacing:5px;text-transform:uppercase;color:var(--blue-mid);margin-top:2px}
+
+.nav-right{display:flex;align-items:center;gap:clamp(10px,2vw,26px)}
+.nav-link{font-family:var(--f-ui);font-weight:400;font-size:clamp(.56rem,.68vw,.72rem);letter-spacing:3px;text-transform:uppercase;color:var(--blue-mid);text-decoration:none;transition:color .24s}
+.nav-link:hover{color:var(--navy)}
+.nav-cta{font-family:var(--f-ui);font-weight:600;font-size:clamp(.52rem,.66vw,.7rem);letter-spacing:3px;text-transform:uppercase;color:#fff;background:var(--red);padding:9px clamp(14px,1.4vw,22px);text-decoration:none;transition:background .28s;white-space:nowrap}
+.nav-cta:hover{background:var(--red-dark)}
+
+/* ── HERO BANNER ── */
+.page-hero{
+  margin-top:var(--nav-h);
+  padding:clamp(52px,9vh,100px) clamp(20px,6vw,80px) clamp(44px,7vh,78px);
+  background:linear-gradient(115deg, var(--navy) 0%, #1a2f52 55%, #0d1a32 100%);
+  position:relative;overflow:hidden;text-align:center;
+}
+/* subtle diagonal lines texture */
+.page-hero::before{
+  content:'';position:absolute;inset:0;
+  background:repeating-linear-gradient(135deg,transparent 0,transparent 28px,rgba(255,255,255,.018) 28px,rgba(255,255,255,.018) 29px);
+}
+/* bottom rule — red + blue gradient */
+.page-hero::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,transparent,var(--red) 30%,var(--blue) 60%,transparent);
+}
+
+.hero-badge{
+  display:inline-flex;align-items:center;gap:10px;
+  font-family:var(--f-ui);font-weight:400;font-size:clamp(.44rem,.62vw,.65rem);letter-spacing:6px;text-transform:uppercase;
+  color:rgba(200,220,240,.52);margin-bottom:clamp(14px,2.5vh,24px);
+}
+.hero-badge::before,.hero-badge::after{content:'';width:22px;height:1px;background:rgba(44,75,138,.5)}
+
+.page-title{
+  font-family:var(--f-head);font-weight:900;
+  font-size:clamp(2.1rem,5vw,4.2rem);
+  color:#F4F9FD;line-height:1;letter-spacing:-1px;
+  margin-bottom:clamp(12px,2vh,18px);
+}
+.page-title em{font-style:italic;color:#e63950}
+
+.page-meta{
+  font-family:var(--f-ui);font-weight:400;font-size:clamp(.5rem,.66vw,.7rem);letter-spacing:4px;text-transform:uppercase;
+  color:rgba(195,218,238,.46);
+  display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap;
+  margin-top:clamp(12px,2vh,20px);
+}
+.meta-dot{width:3px;height:3px;background:rgba(44,75,138,.45);border-radius:50%}
+
+/* ── LAYOUT ── */
+.page-layout{
+  display:grid;
+  grid-template-columns:var(--sidebar-w) 1fr;
+  gap:0;
+  max-width:1180px;
+  margin:0 auto;
+  padding:clamp(30px,5vh,60px) clamp(18px,4vw,56px);
+  align-items:start;
+}
+
+/* ── SIDEBAR ── */
+.toc{position:sticky;top:calc(var(--nav-h) + 22px);padding-right:clamp(18px,3vw,42px)}
+.toc-label{font-family:var(--f-ui);font-weight:600;font-size:.54rem;letter-spacing:5px;text-transform:uppercase;color:var(--blue-mid);margin-bottom:14px;display:block}
+
+.toc-list{list-style:none;display:flex;flex-direction:column;gap:1px}
+.toc-list a{
+  display:flex;align-items:center;gap:9px;
+  font-family:var(--f-ui);font-weight:400;font-size:clamp(.57rem,.68vw,.72rem);letter-spacing:1.5px;
+  color:rgba(15,30,56,.42);text-decoration:none;
+  padding:7px 9px 7px 0;
+  transition:color .22s,padding-left .22s;
+  line-height:1.4;
+}
+.toc-list a::before{content:'';width:14px;height:1px;background:var(--red);opacity:0;flex-shrink:0;transition:opacity .22s}
+.toc-list a:hover,.toc-list a.active{color:var(--red);padding-left:5px}
+.toc-list a:hover::before,.toc-list a.active::before{opacity:1}
+.toc-list a.active{font-weight:600}
+.toc-divider{height:1px;background:var(--border-l);margin:10px 0}
+
+.toc-contact-box{
+  margin-top:20px;
+  background:rgba(44,75,138,.06);
+  border:1px solid var(--border-l);
+  border-left:3px solid var(--blue-mid);
+  padding:14px;
+}
+.toc-contact-box p{font-family:var(--f-ui);font-size:.85rem;line-height:1.62;color:var(--blue-mid);margin-bottom:8px}
+.toc-contact-box a{font-family:var(--f-ui);font-weight:600;font-size:.57rem;letter-spacing:3px;text-transform:uppercase;color:var(--red);text-decoration:none;transition:color .22s}
+.toc-contact-box a:hover{color:var(--red-dark)}
+
+/* ── CONTENT ── */
+.content{border-left:1px solid var(--border-l);padding-left:clamp(22px,4vw,60px)}
+
+.policy-section{
+  padding-bottom:clamp(38px,6vh,60px);
+  margin-bottom:clamp(38px,6vh,60px);
+  border-bottom:1px solid var(--border-l);
+  scroll-margin-top:calc(var(--nav-h) + 28px);
+}
+.policy-section:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+
+.section-num{
+  font-family:var(--f-head);font-weight:700;font-style:italic;
+  font-size:clamp(2.4rem,5vw,3.8rem);
+  color:rgba(44,75,138,.08);line-height:1;margin-bottom:-6px;display:block;
+}
+.section-label{
+  font-family:var(--f-ui);font-weight:600;font-size:.55rem;letter-spacing:5px;text-transform:uppercase;
+  color:var(--blue-mid);display:flex;align-items:center;gap:9px;margin-bottom:9px;
+}
+.section-label::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,var(--blue-mid),transparent);max-width:72px;opacity:.35}
+
+.section-title{
+  font-family:var(--f-head);font-weight:700;
+  font-size:clamp(1.28rem,2.1vw,1.85rem);
+  color:var(--navy);line-height:1.14;margin-bottom:clamp(13px,2.4vh,22px);
+}
+.section-title em{font-style:italic;color:var(--red)}
+
+.body-p{
+  font-family:var(--f-ui);font-weight:400;
+  font-size:clamp(.94rem,1.05vw,1.02rem);line-height:1.84;
+  color:var(--blue-mid);margin-bottom:14px;
+}
+.body-p:last-child{margin-bottom:0}
+.body-p strong{font-weight:600;color:var(--navy)}
+.body-p a{color:var(--red);text-decoration:none;border-bottom:1px solid rgba(178,34,52,.28);transition:border-color .22s}
+.body-p a:hover{border-color:var(--red)}
+
+/* info boxes */
+.info-box{
+  background:rgba(44,75,138,.05);
+  border:1px solid var(--border-l);
+  border-left:3px solid var(--blue-mid);
+  padding:clamp(13px,2.4vh,20px) clamp(15px,2.4vw,24px);
+  margin:clamp(14px,2.4vh,26px) 0;
+}
+.info-box.highlight{background:rgba(178,34,52,.05);border-left-color:var(--red)}
+.info-box p{font-family:var(--f-ui);font-size:clamp(.92rem,1.05vw,1rem);line-height:1.72;color:var(--navy)}
+.info-box-label{font-family:var(--f-ui);font-weight:600;font-size:.5rem;letter-spacing:4px;text-transform:uppercase;color:var(--blue-mid);margin-bottom:7px;display:block}
+.info-box.highlight .info-box-label{color:var(--red)}
+
+/* lists */
+.policy-list{list-style:none;display:flex;flex-direction:column;gap:9px;margin:clamp(13px,2vh,20px) 0}
+.policy-list li{
+  display:flex;align-items:flex-start;gap:12px;
+  font-family:var(--f-ui);font-weight:400;
+  font-size:clamp(.92rem,1.05vw,1rem);line-height:1.72;
+  color:var(--blue-mid);
+}
+.policy-list li::before{
+  content:'';width:5px;height:5px;background:var(--red);
+  transform:rotate(45deg);flex-shrink:0;margin-top:8px;
+}
+
+.sub-h{
+  font-family:var(--f-head);font-weight:700;
+  font-size:clamp(.98rem,1.3vw,1.18rem);color:var(--navy);
+  margin:clamp(18px,2.8vh,28px) 0 9px;
+}
+
+/* data table */
+.data-table{width:100%;border-collapse:collapse;margin:clamp(14px,2.4vh,26px) 0;font-size:clamp(.85rem,.98vw,.96rem)}
+.data-table th{
+  font-family:var(--f-ui);font-weight:600;font-size:.52rem;letter-spacing:4px;text-transform:uppercase;
+  color:#fff;background:var(--navy);padding:11px 14px;text-align:left;
+}
+.data-table td{
+  font-family:var(--f-ui);font-weight:400;
+  padding:10px 14px;color:var(--blue-mid);line-height:1.58;
+  border-bottom:1px solid var(--border-l);vertical-align:top;
+}
+.data-table tr:last-child td{border-bottom:none}
+.data-table tr:nth-child(even) td{background:rgba(44,75,138,.035)}
+
+/* ── FOOTER ── */
+.page-footer{
+  background:var(--navy);
+  padding:clamp(30px,5vh,50px) clamp(18px,5vw,60px);
+  border-top:2px solid var(--red);
+  text-align:center;
+}
+.footer-rule{width:44px;height:1px;background:rgba(178,34,52,.4);margin:0 auto clamp(14px,2.4vh,22px)}
+.footer-brand{font-family:var(--f-head);font-weight:900;font-size:1.08rem;letter-spacing:4px;color:#E8F2F9;text-decoration:none}
+.footer-brand span{color:var(--red)}
+.footer-links{display:flex;align-items:center;justify-content:center;gap:clamp(10px,2.8vw,30px);flex-wrap:wrap;margin:clamp(12px,2.4vh,20px) 0}
+.footer-links a{font-family:var(--f-ui);font-weight:400;font-size:clamp(.49rem,.62vw,.66rem);letter-spacing:3px;text-transform:uppercase;color:rgba(200,220,240,.32);text-decoration:none;transition:color .22s}
+.footer-links a:hover{color:var(--red)}
+.footer-links a.active-page{color:rgba(178,34,52,.75)}
+.footer-copy{font-family:var(--f-ui);font-weight:300;font-size:.5rem;letter-spacing:3px;text-transform:uppercase;color:rgba(200,220,240,.17)}
+
+/* ── BACK TO TOP ── */
+#btt{
+  position:fixed;bottom:26px;right:26px;z-index:700;
+  width:40px;height:40px;
+  background:var(--red);border:none;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 4px 16px rgba(178,34,52,.38);
+  opacity:0;pointer-events:none;
+  transition:opacity .32s,transform .32s,background .22s;
+  transform:translateY(10px);
+}
+#btt.show{opacity:1;pointer-events:all;transform:translateY(0)}
+#btt:hover{background:var(--red-dark)}
+#btt svg{width:15px;height:15px;color:#fff}
+
+/* ── MOBILE TOC TOGGLE ── */
+.toc-toggle{
+  display:none;
+  width:100%;background:rgba(44,75,138,.07);border:1px solid var(--border-m);
+  font-family:var(--f-ui);font-weight:600;font-size:.58rem;letter-spacing:4px;text-transform:uppercase;
+  color:var(--blue-mid);padding:12px 16px;cursor:pointer;
+  align-items:center;justify-content:space-between;
+  margin-bottom:22px;transition:background .22s;
+}
+.toc-toggle:hover{background:rgba(44,75,138,.12)}
+.toc-toggle svg{width:13px;height:13px;transition:transform .28s}
+.toc-toggle.open svg{transform:rotate(180deg)}
+.toc-mobile{display:none}
+.toc-mobile.open{display:block}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  :root{--sidebar-w:0px}
+  .page-layout{grid-template-columns:1fr;padding:clamp(22px,4vh,46px) clamp(14px,4vw,38px);gap:0}
+  .toc{position:static;padding-right:0;margin-bottom:0}
+  .toc-label,.toc-list,.toc-divider,.toc-contact-box{display:none}
+  .toc-toggle{display:flex}
+  .toc-mobile{padding:14px 0 22px}
+  .toc-mobile .toc-list{display:flex}
+  .toc-mobile .toc-contact-box{display:block}
+  .content{border-left:none;padding-left:0;border-top:1px solid var(--border-l);padding-top:28px}
+}
+@media(max-width:600px){
+  .page-hero{padding:38px 18px 34px}
+  .data-table{font-size:.8rem}
+  .data-table th,.data-table td{padding:8px 11px}
+  #btt{bottom:16px;right:16px;width:36px;height:36px}
+  .nav-right .nav-link{display:none}
+}
+@media(max-width:420px){
+  .page-meta{gap:9px}
+  .nav-cta{padding:8px 13px;font-size:.5rem}
+}
+</style>
 </head>
 <body>
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="logo">Wrangler Homes</div>
-            <ul class="nav-menu">
-                <li><a href="index.html" class="nav-link">Home</a></li>
-                <li><a href="about.html" class="nav-link">About</a></li>
-                <li><a href="buy.html" class="nav-link">Buy</a></li>
-            </ul>
-            <div class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </div>
-    </nav>
+<div id="grain"></div>
 
-    <header class="page-header">
-        <div class="header-content">
-            <h1>Privacy Policy</h1>
-            <p>Last Updated: March 2026</p>
-        </div>
-    </header>
+<!-- NAV -->
+<nav id="nav">
+  <a href="index.html" class="nav-brand">
+    <span class="nav-brand-top"><span>Wrangler</span> Homes</span>
+    <span class="nav-brand-bot">We Buy Homes · America</span>
+  </a>
+  <div class="nav-right">
+    <a href="index.html" class="nav-link">Home</a>
+    <a href="index.html#about" class="nav-link">About</a>
+    <a href="index.html#cash-contact-offer" class="nav-cta">Get Offer</a>
+  </div>
+</nav>
 
-    <div class="container">
-        <section class="policy-section">
-            <h2>1. Introduction</h2>
-            <p>Wrangler Homes ("we," "us," "our," or "Company") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website.</p>
-        </section>
+<!-- HERO -->
+<div class="page-hero">
+  <div class="hero-badge">Legal · Compliance</div>
+  <h1 class="page-title"><em>Privacy</em> Policy</h1>
+  <div class="page-meta">
+    <span>Wrangler Homes LLC</span>
+    <span class="meta-dot"></span>
+    <span>Effective: January 1, 2026</span>
+    <span class="meta-dot"></span>
+    <span>Last Updated: March 1, 2026</span>
+  </div>
+</div>
 
-        <section class="policy-section">
-            <h2>2. Information We Collect</h2>
-            <p>We may collect information about you in a variety of ways. The information we may collect on the Site includes:</p>
-            <ul>
-                <li><strong>Personal Data:</strong> Name, email address, phone number, mailing address, and any other information you voluntarily provide when contacting us or making a purchase.</li>
-                <li><strong>Financial Data:</strong> Financial information such as bank account numbers and credit card information used to process transactions.</li>
-                <li><strong>Data From Social Networks:</strong> If you link a social media account to our Site, we may receive personal data from that social network.</li>
-                <li><strong>Mobile Device Data:</strong> Device identifiers, mobile operating system, and information about your use of our Site.</li>
-            </ul>
-        </section>
+<!-- LAYOUT -->
+<div class="page-layout">
 
-        <section class="policy-section">
-            <h2>3. Use of Your Information</h2>
-            <p>Having accurate information about you permits us to provide you with a smooth, efficient, and customized experience. Specifically, we may use information collected about you via the Site to:</p>
-            <ul>
-                <li>Create and manage your account</li>
-                <li>Process your transactions and send related information</li>
-                <li>Email you regarding your account or order</li>
-                <li>Generate a personal profile about you so that future interactions with us are personalized</li>
-                <li>Improve our Site and services</li>
-                <li>Monitor and analyze trends, usage, and activities</li>
-                <li>Notify you of updates to the Site or services</li>
-            </ul>
-        </section>
+  <!-- SIDEBAR -->
+  <aside class="toc">
+    <span class="toc-label">Contents</span>
+    <ul class="toc-list" id="toc-list">
+      <li><a href="#s1">1. Who We Are</a></li>
+      <li><a href="#s2">2. Information We Collect</a></li>
+      <li><a href="#s3">3. How We Use It</a></li>
+      <li><a href="#s4">4. Sharing &amp; Disclosure</a></li>
+      <li><a href="#s5">5. Cookies &amp; Tracking</a></li>
+      <li><a href="#s6">6. Data Retention</a></li>
+      <li><a href="#s7">7. Your Rights</a></li>
+      <li><a href="#s8">8. Data Security</a></li>
+      <li><a href="#s9">9. Children's Privacy</a></li>
+      <li><a href="#s10">10. Third-Party Links</a></li>
+      <li><a href="#s11">11. Policy Changes</a></li>
+      <li><a href="#s12">12. Contact Us</a></li>
+    </ul>
+    <div class="toc-divider"></div>
+    <div class="toc-contact-box">
+      <p>Questions about your privacy? We're here.</p>
+      <a href="mailto:privacy@wranglerhomes.com">privacy@wranglerhomes.com</a>
+    </div>
+  </aside>
 
-        <section class="policy-section">
-            <h2>4. Disclosure of Your Information</h2>
-            <p>We may share information we have collected about you in certain situations:</p>
-            <ul>
-                <li><strong>By Law or to Protect Rights:</strong> If required by law or if we believe that disclosure is necessary to protect your rights, our rights, or the rights of others.</li>
-                <li><strong>Third-Party Service Providers:</strong> We may share your information with third parties that perform services on our behalf, including payment processors and marketing partners.</li>
-                <li><strong>Business Transfers:</strong> Your information may be transferred as a business asset in the event of merger, bankruptcy, or sale.</li>
-            </ul>
-        </section>
+  <!-- CONTENT -->
+  <main class="content">
 
-        <section class="policy-section">
-            <h2>5. Security of Your Information</h2>
-            <p>We use administrative, technical, and physical security measures to protect your personal information. However, no security measure is perfect or impenetrable. We cannot guarantee the absolute security of your information.</p>
-        </section>
-
-        <section class="policy-section">
-            <h2>6. Contact Us</h2>
-            <p>If you have questions or comments about this Privacy Policy, please contact us at:</p>
-            <p>
-                <strong>Wrangler Homes</strong><br>
-                Email: privacy@wranglerhomes.com<br>
-                Phone: (555) 123-4567<br>
-                Address: 123 Real Estate Lane, Property City, PC 12345
-            </p>
-        </section>
+    <!-- Mobile TOC -->
+    <button class="toc-toggle" id="toc-toggle" aria-expanded="false">
+      Jump to Section
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+    </button>
+    <div class="toc-mobile" id="toc-mobile">
+      <ul class="toc-list">
+        <li><a href="#s1">1. Who We Are</a></li>
+        <li><a href="#s2">2. Information We Collect</a></li>
+        <li><a href="#s3">3. How We Use It</a></li>
+        <li><a href="#s4">4. Sharing &amp; Disclosure</a></li>
+        <li><a href="#s5">5. Cookies &amp; Tracking</a></li>
+        <li><a href="#s6">6. Data Retention</a></li>
+        <li><a href="#s7">7. Your Rights</a></li>
+        <li><a href="#s8">8. Data Security</a></li>
+        <li><a href="#s9">9. Children's Privacy</a></li>
+        <li><a href="#s10">10. Third-Party Links</a></li>
+        <li><a href="#s11">11. Policy Changes</a></li>
+        <li><a href="#s12">12. Contact Us</a></li>
+      </ul>
+      <div class="toc-divider"></div>
+      <div class="toc-contact-box">
+        <p>Questions about your privacy? We're here.</p>
+        <a href="mailto:privacy@wranglerhomes.com">privacy@wranglerhomes.com</a>
+      </div>
     </div>
 
-    <footer>
-        <div class="footer-content">
-            <div class="footer-section">
-                <h4>Wrangler Homes</h4>
-                <p>&copy; 2026 All rights reserved</p>
-            </div>
-            <div class="footer-section">
-                <h4>Quick Links</h4>
-                <ul>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="buy.html">Properties</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h4>Contact</h4>
-                <p>Email: info@wranglerhomes.com</p>
-                <p>Phone: (555) 123-4567</p>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <a href="privacy-policy.html">Privacy Policy</a> | <a href="terms-conditions.html">Terms & Conditions</a>
-        </div>
-    </footer>
+    <div class="info-box highlight" style="margin-bottom:clamp(26px,4vh,46px)">
+      <span class="info-box-label">Summary</span>
+      <p>Wrangler Homes respects your privacy. We collect only what we need to evaluate your property and make you a cash offer. We do not sell your personal information to third parties — ever.</p>
+    </div>
 
-    <script src="js/script.js"></script>
+    <!-- S1 -->
+    <section class="policy-section" id="s1">
+      <span class="section-num">01</span>
+      <span class="section-label">Introduction</span>
+      <h2 class="section-title">Who We <em>Are</em></h2>
+      <p class="body-p">Wrangler Homes LLC ("Wrangler Homes," "we," "us," or "our") is a real estate investment company headquartered at 7890 Desert Blvd, Scottsdale, AZ 85251. We purchase residential and commercial properties directly from homeowners across all fifty states of the United States.</p>
+      <p class="body-p">This Privacy Policy explains how we collect, use, store, and protect the personal information you share with us when you visit our website, submit a property inquiry, call our team, or interact with us in any other way. By using our services, you agree to the practices described in this policy.</p>
+      <p class="body-p">If you have any questions before reading further, contact us at <a href="mailto:privacy@wranglerhomes.com">privacy@wranglerhomes.com</a> or call <a href="tel:18772692267">1 (877) 269-2267</a>.</p>
+    </section>
+
+    <!-- S2 -->
+    <section class="policy-section" id="s2">
+      <span class="section-num">02</span>
+      <span class="section-label">Data Collection</span>
+      <h2 class="section-title">Information We <em>Collect</em></h2>
+      <p class="body-p">We collect information in two ways: directly from you, and automatically through your use of our website.</p>
+      <h3 class="sub-h">Information You Provide Directly</h3>
+      <ul class="policy-list">
+        <li><strong>Contact details</strong> — your first name, last name, phone number, and email address.</li>
+        <li><strong>Property information</strong> — the address, type, condition, and estimated value of the property you wish to sell.</li>
+        <li><strong>Situation details</strong> — any voluntary context you provide (foreclosure, inherited property, relocation, divorce, etc.).</li>
+        <li><strong>Selling timeline</strong> — how quickly you need or wish to complete a sale.</li>
+        <li><strong>Communications</strong> — records of emails, call transcripts (where permitted by law), and any messages you send us.</li>
+      </ul>
+      <h3 class="sub-h">Information Collected Automatically</h3>
+      <ul class="policy-list">
+        <li><strong>Device &amp; browser data</strong> — browser type, operating system, screen resolution, and device type.</li>
+        <li><strong>Usage data</strong> — pages visited, time spent, links clicked, and referring URLs.</li>
+        <li><strong>IP address</strong> — used to determine approximate geographic location (city/state level only).</li>
+        <li><strong>Cookies &amp; local storage</strong> — see Section 5 for full details.</li>
+      </ul>
+      <div class="info-box">
+        <span class="info-box-label">Note</span>
+        <p>We do not collect Social Security numbers, financial account details, credit scores, or government ID numbers at any point during our online process.</p>
+      </div>
+    </section>
+
+    <!-- S3 -->
+    <section class="policy-section" id="s3">
+      <span class="section-num">03</span>
+      <span class="section-label">Purpose of Collection</span>
+      <h2 class="section-title">How We <em>Use</em> Your Information</h2>
+      <p class="body-p">We use the information we collect for the following purposes:</p>
+      <table class="data-table">
+        <thead><tr><th>Purpose</th><th>Details</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Evaluate your property</strong></td><td>To assess market value and prepare a fair cash offer based on your property details.</td></tr>
+          <tr><td><strong>Contact you</strong></td><td>To follow up by phone, email, or SMS with your cash offer or any questions about your property.</td></tr>
+          <tr><td><strong>Process transactions</strong></td><td>To facilitate the purchase agreement, closing, and related legal paperwork once an offer is accepted.</td></tr>
+          <tr><td><strong>Improve our services</strong></td><td>To analyze how visitors use our website so we can improve content, layout, and user experience.</td></tr>
+          <tr><td><strong>Legal compliance</strong></td><td>To comply with applicable real estate laws, tax requirements, and regulatory obligations.</td></tr>
+          <tr><td><strong>Security</strong></td><td>To detect and prevent fraud, unauthorized access, and other malicious activity.</td></tr>
+        </tbody>
+      </table>
+      <p class="body-p">We will never use your information for purposes that conflict with the reason you provided it. We do not send unsolicited commercial emails to people who have not expressed interest in our services.</p>
+    </section>
+
+    <!-- S4 -->
+    <section class="policy-section" id="s4">
+      <span class="section-num">04</span>
+      <span class="section-label">Third Parties</span>
+      <h2 class="section-title">Sharing &amp; <em>Disclosure</em></h2>
+      <p class="body-p"><strong>We do not sell, rent, or trade your personal information.</strong> Period. We may share your information only in the limited circumstances described below:</p>
+      <ul class="policy-list">
+        <li><strong>Service providers</strong> — trusted vendors who help us operate our website under strict data processing agreements.</li>
+        <li><strong>Title companies &amp; closing agents</strong> — if you accept an offer, we share necessary information with the title company and escrow agent handling the closing.</li>
+        <li><strong>Legal &amp; regulatory</strong> — if required by a valid court order, subpoena, or applicable law.</li>
+        <li><strong>Business transfers</strong> — if Wrangler Homes is acquired or merges, your information may transfer as part of that transaction.</li>
+        <li><strong>With your consent</strong> — in any other case where you have given us explicit permission.</li>
+      </ul>
+      <div class="info-box highlight">
+        <span class="info-box-label">Our Commitment</span>
+        <p>We will never share your information with real estate agents, marketing companies, data brokers, or lead resellers. Your inquiry stays private between you and Wrangler Homes.</p>
+      </div>
+    </section>
+
+    <!-- S5 -->
+    <section class="policy-section" id="s5">
+      <span class="section-num">05</span>
+      <span class="section-label">Cookies</span>
+      <h2 class="section-title">Cookies &amp; <em>Tracking</em></h2>
+      <p class="body-p">Our website uses cookies — small text files stored on your device — to make the site function properly and understand how it is being used.</p>
+      <table class="data-table">
+        <thead><tr><th>Cookie Type</th><th>Purpose</th><th>Duration</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Essential</strong></td><td>Required for the site to function — form submissions, navigation, security.</td><td>Session</td></tr>
+          <tr><td><strong>Analytics</strong></td><td>Helps us understand page visits, traffic sources, and user behavior.</td><td>Up to 2 years</td></tr>
+          <tr><td><strong>Preferences</strong></td><td>Remembers your settings for return visits.</td><td>Up to 1 year</td></tr>
+          <tr><td><strong>Marketing</strong></td><td>Used to serve relevant ads if you have opted in. Disabled by default.</td><td>Up to 90 days</td></tr>
+        </tbody>
+      </table>
+      <p class="body-p">You can control or delete cookies through your browser settings at any time. Disabling cookies may affect certain features of our website.</p>
+    </section>
+
+    <!-- S6 -->
+    <section class="policy-section" id="s6">
+      <span class="section-num">06</span>
+      <span class="section-label">Retention</span>
+      <h2 class="section-title">Data <em>Retention</em></h2>
+      <p class="body-p">We keep your information for as long as necessary to fulfill the purposes described in this policy or as required by law.</p>
+      <ul class="policy-list">
+        <li><strong>Inquiry data</strong> — retained for up to 3 years after your last contact, or until you request deletion.</li>
+        <li><strong>Closed transaction records</strong> — retained for 7 years to meet legal and accounting requirements.</li>
+        <li><strong>Website analytics data</strong> — retained for up to 26 months in anonymized form.</li>
+        <li><strong>Email communications</strong> — retained for up to 3 years for quality assurance.</li>
+      </ul>
+      <p class="body-p">When data is no longer needed, we securely delete or anonymize it in accordance with our internal retention schedule.</p>
+    </section>
+
+    <!-- S7 -->
+    <section class="policy-section" id="s7">
+      <span class="section-num">07</span>
+      <span class="section-label">Your Rights</span>
+      <h2 class="section-title">Your <em>Rights</em></h2>
+      <p class="body-p">Depending on your state of residence, you may have some or all of the following rights:</p>
+      <ul class="policy-list">
+        <li><strong>Right to Access</strong> — request a copy of the personal information we hold about you.</li>
+        <li><strong>Right to Correction</strong> — ask us to correct inaccurate or incomplete information.</li>
+        <li><strong>Right to Deletion</strong> — request that we delete your personal information, subject to legal exceptions.</li>
+        <li><strong>Right to Opt-Out</strong> — opt out of any marketing communications at any time.</li>
+        <li><strong>Right to Portability</strong> — request your data in a structured, machine-readable format.</li>
+        <li><strong>Right to Non-Discrimination</strong> — exercising these rights will not affect the quality of service you receive.</li>
+      </ul>
+      <div class="info-box">
+        <span class="info-box-label">California Residents — CCPA</span>
+        <p>Under the California Consumer Privacy Act, California residents have the right to know what personal information is collected, to delete it, to opt out of its sale (we don't sell it), and to non-discrimination. Submit requests to <a href="mailto:privacy@wranglerhomes.com">privacy@wranglerhomes.com</a>.</p>
+      </div>
+      <p class="body-p">To exercise any of these rights, contact us at <a href="mailto:privacy@wranglerhomes.com">privacy@wranglerhomes.com</a>. We will respond within 30 days.</p>
+    </section>
+
+    <!-- S8 -->
+    <section class="policy-section" id="s8">
+      <span class="section-num">08</span>
+      <span class="section-label">Security</span>
+      <h2 class="section-title">Data <em>Security</em></h2>
+      <p class="body-p">We take reasonable technical and organizational measures to protect your personal information. Our security practices include:</p>
+      <ul class="policy-list">
+        <li>SSL/TLS encryption for all data transmitted through our website.</li>
+        <li>Encrypted storage for sensitive information at rest.</li>
+        <li>Access controls limiting data access to authorized personnel only.</li>
+        <li>Regular security assessments and staff training on data protection.</li>
+        <li>Secure deletion protocols when data is no longer needed.</li>
+      </ul>
+      <p class="body-p">No system is completely secure. If you believe your information has been compromised, please contact us immediately at <a href="mailto:privacy@wranglerhomes.com">privacy@wranglerhomes.com</a>.</p>
+    </section>
+
+    <!-- S9 -->
+    <section class="policy-section" id="s9">
+      <span class="section-num">09</span>
+      <span class="section-label">Minors</span>
+      <h2 class="section-title">Children's <em>Privacy</em></h2>
+      <p class="body-p">Our services are intended solely for adults who are of legal age to enter into a real estate transaction. We do not knowingly collect personal information from individuals under the age of 18.</p>
+      <p class="body-p">If you are a parent or guardian and believe your child has provided personal information to us, please contact us immediately at <a href="mailto:privacy@wranglerhomes.com">privacy@wranglerhomes.com</a>. We will promptly delete any such information upon verification.</p>
+    </section>
+
+    <!-- S10 -->
+    <section class="policy-section" id="s10">
+      <span class="section-num">10</span>
+      <span class="section-label">External Sites</span>
+      <h2 class="section-title">Third-Party <em>Links</em></h2>
+      <p class="body-p">Our website may contain links to external websites such as title company portals, state government property databases, or social media platforms. These sites are not operated by Wrangler Homes, and we have no control over their privacy practices.</p>
+      <p class="body-p">We encourage you to review the privacy policies of any third-party websites you visit. Wrangler Homes is not responsible for the content or privacy practices of external sites.</p>
+    </section>
+
+    <!-- S11 -->
+    <section class="policy-section" id="s11">
+      <span class="section-num">11</span>
+      <span class="section-label">Updates</span>
+      <h2 class="section-title">Policy <em>Changes</em></h2>
+      <p class="body-p">We may update this Privacy Policy to reflect changes in our practices, technology, legal requirements, or business operations. When we make material changes, we will:</p>
+      <ul class="policy-list">
+        <li>Update the "Last Updated" date at the top of this page.</li>
+        <li>Post a notice on our homepage for 30 days following a significant change.</li>
+        <li>Send an email notification to users who have an active relationship with us.</li>
+      </ul>
+      <p class="body-p">Your continued use of our services after any changes take effect constitutes acceptance of the revised policy.</p>
+    </section>
+
+    <!-- S12 -->
+    <section class="policy-section" id="s12">
+      <span class="section-num">12</span>
+      <span class="section-label">Get in Touch</span>
+      <h2 class="section-title">Contact <em>Us</em></h2>
+      <p class="body-p">If you have questions, concerns, or requests regarding this Privacy Policy, please reach out through any of the following channels:</p>
+      <ul class="policy-list">
+        <li><strong>Email:</strong> <a href="mailto:privacy@wranglerhomes.com">privacy@wranglerhomes.com</a></li>
+        <li><strong>Phone:</strong> <a href="tel:18772692267">1 (877) 269-2267</a> — Mon–Fri, 8am–8pm EST</li>
+        <li><strong>Mail:</strong> Wrangler Homes LLC, Attn: Privacy Officer, 7890 Desert Blvd, Scottsdale, AZ 85251</li>
+      </ul>
+      <p class="body-p">All requests will receive a response within 30 business days.</p>
+      <div class="info-box highlight" style="margin-top:clamp(18px,2.8vh,30px)">
+        <span class="info-box-label">Ready to Sell?</span>
+        <p>This policy exists to protect you — and so does our process. Get a no-obligation cash offer today. <a href="index.html">Return to homepage →</a></p>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<!-- FOOTER -->
+<footer class="page-footer">
+  <div class="footer-rule"></div>
+  <a href="wrangler-homes.html" class="footer-brand"><span>Wrangler</span> Homes</a>
+  <div class="footer-links">
+    <a href="index.html">Home</a>
+    <a href="index.html#about">About</a>
+    <a href="index.html#process">Process</a>
+    <a href="index.html#testimonials">Stories</a>
+    <a href="privacy-policy.html" class="active-page">Privacy Policy</a>
+  </div>
+  <p class="footer-copy">© 2026 Wrangler Homes LLC. All rights reserved. · Scottsdale, AZ</p>
+</footer>
+
+<!-- BACK TO TOP -->
+<button id="btt" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+
+<script>
+var nav = document.getElementById('nav');
+window.addEventListener('scroll', function(){ nav.classList.toggle('scrolled', window.scrollY > 20); }, {passive:true});
+
+var btt = document.getElementById('btt');
+window.addEventListener('scroll', function(){ btt.classList.toggle('show', window.scrollY > 400); }, {passive:true});
+
+var tocToggle = document.getElementById('toc-toggle');
+var tocMobile = document.getElementById('toc-mobile');
+tocToggle.addEventListener('click', function(){
+  var open = tocMobile.classList.toggle('open');
+  tocToggle.classList.toggle('open', open);
+  tocToggle.setAttribute('aria-expanded', open);
+});
+tocMobile.querySelectorAll('a').forEach(function(a){
+  a.addEventListener('click', function(){
+    tocMobile.classList.remove('open');
+    tocToggle.classList.remove('open');
+    tocToggle.setAttribute('aria-expanded','false');
+  });
+});
+
+var sections = document.querySelectorAll('.policy-section[id]');
+var tocLinks = document.querySelectorAll('.toc-list a');
+function setActive(){
+  var scrollY = window.scrollY + 110;
+  var active = null;
+  sections.forEach(function(sec){ if(sec.offsetTop <= scrollY) active = sec.id; });
+  tocLinks.forEach(function(a){ a.classList.toggle('active', a.getAttribute('href') === '#' + active); });
+}
+window.addEventListener('scroll', setActive, {passive:true});
+setActive();
+</script>
 </body>
 </html>
