@@ -16,6 +16,17 @@ html{scroll-behavior:smooth}
   --shadow:rgba(15,30,56,0.13);--f-head:'Fraunces',serif;--f-ui:'Space Grotesk',system-ui,sans-serif;
 }
 body{background:var(--off-white);font-family:var(--f-ui);font-weight:500;color:var(--navy);-webkit-font-smoothing:antialiased}
+
+/* scrollbar */
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-track{background:#0d1a32}
+::-webkit-scrollbar-thumb{background:goldenrod;border-radius:3px}
+
+::selection {
+  background: #d4af37;
+  color: #0b1b33;
+}
+
 #grain{position:fixed;inset:0;pointer-events:none;z-index:8000;opacity:.02;
   background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 600 600' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='f'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='600' height='600' filter='url(%23f)'/%3E%3C/svg%3E");
   background-size:200px;mix-blend-mode:multiply}
@@ -1028,7 +1039,7 @@ footer::before{content:'';display:block;width:50px;height:2px;background:var(--r
   <ul class="nav-links">
     <li><a href="about.html">About</a></li>
     <li><a href="buy.html">Buy</a></li>
-    <li><a href="#wrangler-footer">Contact</a></li>
+    <li><a href="#cta">Contact</a></li>
   </ul>
   <a href="tel:18772692267" class="nav-tel">1 (877) 269-2267</a>
 </div>
@@ -1511,7 +1522,7 @@ footer::before{content:'';display:block;width:50px;height:2px;background:var(--r
     <div class="why-layout">
       <div class="why-left rv-l">
         <p class="s-body">We are not a listing service. We are buyers — direct, committed, and present from first call to closing day.</p>
-        <a href="#cash-contact-offer" class="arrow-link">Start Now</a>
+        <a href="#hero" class="arrow-link">Start Now</a>
       </div>
       <div class="why-right">
         <div class="why-item rv d1"><div class="wi-num">01</div><div class="wi-body"><h3>No Repairs Required</h3><p>Sell as-is. Inherited estate, foreclosure, water damage — we have seen it all and bought it all.</p></div></div>

@@ -28,12 +28,18 @@ html,body{overflow-x:hidden}
   --sidebar-w: 252px;
 }
 
+
 body{background:var(--off-white);font-family:var(--f-ui);font-weight:500;color:var(--navy);-webkit-font-smoothing:antialiased}
 
 /* scrollbar */
 ::-webkit-scrollbar{width:5px}
-::-webkit-scrollbar-track{background:var(--blue-lt)}
-::-webkit-scrollbar-thumb{background:var(--blue-mid);border-radius:3px}
+::-webkit-scrollbar-track{background:#0d1a32}
+::-webkit-scrollbar-thumb{background:goldenrod;border-radius:3px}
+
+::selection {
+  background: #d4af37;
+  color: #0b1b33;
+}
 
 /* grain */
 #grain{position:fixed;inset:0;pointer-events:none;z-index:9000;opacity:.018;
@@ -313,8 +319,9 @@ body{background:var(--off-white);font-family:var(--f-ui);font-weight:500;color:v
   </a>
   <div class="nav-right">
     <a href="index.html" class="nav-link">Home</a>
-    <a href="index.html#about" class="nav-link">About</a>
-    <a href="index.html#cash-contact-offer" class="nav-cta">Get Offer</a>
+    <a href="about.html" class="nav-link">About</a>
+    <a href="buy.html" class="nav-link">Buy</a>
+    <a href="index.html" class="nav-cta">Get Offer</a>
   </div>
 </nav>
 
@@ -598,9 +605,9 @@ body{background:var(--off-white);font-family:var(--f-ui);font-weight:500;color:v
   <a href="wrangler-homes.html" class="footer-brand"><span>Wrangler</span> Homes</a>
   <div class="footer-links">
     <a href="index.html">Home</a>
-    <a href="index.html#about">About</a>
-    <a href="index.html#process">Process</a>
-    <a href="index.html#testimonials">Stories</a>
+    <a href="about.html">About</a>
+    <a href="buy.html">Buy</a>
+    <a href="about.html#stories">Stories</a>
     <a href="privacy-policy.html" class="active-page">Privacy Policy</a>
   </div>
   <p class="footer-copy">© 2026 Wrangler Homes LLC. All rights reserved. · Scottsdale, AZ</p>

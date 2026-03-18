@@ -19,6 +19,16 @@ html{scroll-behavior:smooth}
 }
 body{background:var(--off-white);font-family:var(--f-ui);font-weight:500;color:var(--navy);-webkit-font-smoothing:antialiased}
 
+/* scrollbar */
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-track{background:#0d1a32}
+::-webkit-scrollbar-thumb{background:goldenrod;border-radius:3px}
+
+::selection {
+  background: #d4af37;
+  color: #0b1b33;
+}
+
 #grain{position:fixed;inset:0;pointer-events:none;z-index:8000;opacity:.02;
   background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 600 600' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='f'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='600' height='600' filter='url(%23f)'/%3E%3C/svg%3E");
   background-size:200px;mix-blend-mode:multiply}
@@ -37,15 +47,19 @@ body{background:var(--off-white);font-family:var(--f-ui);font-weight:500;color:v
 @keyframes lPulse{from{opacity:.2}to{opacity:.65}}
 
 /* ── NAV ── */
-#nav{position:fixed;top:0;left:0;right:0;z-index:600;display:flex;align-items:center;justify-content:space-between;padding:22px 60px;transition:all .38s cubic-bezier(.4,0,.2,1)}
-#nav.stuck{background:rgba(255,255,255,.97);backdrop-filter:blur(20px);padding:12px 60px;border-bottom:1px solid var(--border-m);box-shadow:0 2px 20px rgba(15,30,56,.07)}
-.nav-brand{display:flex;flex-direction:column;line-height:1;text-decoration:none;flex-shrink:0}
-.nav-brand-top{font-family:var(--f-head);font-weight:900;font-size:1.28rem;letter-spacing:3px;color:#fff;transition:color .3s}
-.nav-brand-top span{color:#e63950}
-#nav.stuck .nav-brand-top{color:var(--navy)}
-#nav.stuck .nav-brand-top span{color:var(--red)}
-.nav-brand-bot{font-family:var(--f-ui);font-weight:300;font-size:.54rem;letter-spacing:5px;text-transform:uppercase;color:rgba(255,255,255,.42);margin-top:4px;transition:color .3s}
-#nav.stuck .nav-brand-bot{color:var(--blue-mid)}
+#nav{position:fixed;top:0;left:0;right:0;z-index:600;display:flex;align-items:center;justify-content:space-between;padding:10px 48px;transition:all .38s cubic-bezier(.4,0,.2,1);height:72px} /* Increased from 64px to accommodate larger logo */
+#nav.stuck{background:rgba(255,255,255,.97);backdrop-filter:blur(20px);padding:8px 48px;border-bottom:1px solid var(--border-m);box-shadow:0 2px 20px rgba(15,30,56,.07)}
+
+/* Logo image in nav - ADJUSTED - INCREASED SIZE */
+.nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+.nav-logo-img{height:48px;width:auto;object-fit:contain;display:block;filter:drop-shadow(0 2px 8px rgba(0,0,0,.4));transition:height .3s,filter .3s} /* Increased from 36px to 48px */
+#nav.stuck .nav-logo-img{height:52px;filter:none} /* Increased from 32px to 42px */
+.nav-brand-text{font-family:var(--f-head);font-weight:700;font-size:1.2rem;color:#fff;letter-spacing:0.5px;transition:color .3s} /* Slightly increased from 1.1rem */
+#nav.stuck .nav-brand-text{color:var(--navy)}
+.nav-brand-text span{color:var(--gold);font-weight:900}
+
+
+/* Desktop links */
 .nav-links{display:flex;gap:24px;list-style:none;margin:0;padding:0}
 .nav-links a{font-family:var(--f-ui);font-weight:400;font-size:.63rem;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.82);text-decoration:none;position:relative;transition:color .24s;white-space:nowrap}
 .nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;right:100%;height:1px;background:#e63950;transition:right .34s cubic-bezier(.7,0,.3,1)}
@@ -53,23 +67,31 @@ body{background:var(--off-white);font-family:var(--f-ui);font-weight:500;color:v
 .nav-links a:hover::after{right:0}
 #nav.stuck .nav-links a{color:var(--blue-mid)}
 #nav.stuck .nav-links a:hover{color:var(--navy)}
-.nav-tel{font-family:var(--f-ui);font-weight:600;font-size:.63rem;letter-spacing:2px;color:#fff;text-decoration:none;border:1.5px solid rgba(255,255,255,.35);padding:8px 18px;transition:all .24s;white-space:nowrap;flex-shrink:0}
+
+.nav-tel{font-family:var(--f-ui);font-weight:600;font-size:.63rem;letter-spacing:2px;color:#fff;background-color:#0b1b33;text-decoration:none;border:1.5px solid rgba(255,255,255,.35);padding:8px 18px;transition:all .24s;white-space:nowrap;flex-shrink:0}
 .nav-tel:hover{border-color:#e63950;background:rgba(178,34,52,.18)}
-#nav.stuck .nav-tel{color:var(--red);border-color:rgba(178,34,52,.35)}
+#nav.stuck .nav-tel{color:var(--gold);border-color:rgba(178,34,52,.35)}
 #nav.stuck .nav-tel:hover{border-color:var(--red);background:rgba(178,34,52,.07)}
+
 .nav-hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:40px;height:40px;cursor:pointer;background:none;border:1.5px solid rgba(255,255,255,.3);border-radius:2px;padding:8px;flex-shrink:0;transition:border-color .24s;position:relative;z-index:600}
 .nav-hamburger span{display:block;width:100%;height:1.5px;background:#fff;transition:transform .3s cubic-bezier(.4,0,.2,1),opacity .22s;transform-origin:center}
 #nav.stuck .nav-hamburger{border-color:var(--border-m)}
 #nav.stuck .nav-hamburger span{background:var(--navy)}
+.nav-hamburger:hover{border-color:rgba(255,255,255,.7)}
+#nav.stuck .nav-hamburger:hover{border-color:var(--blue-mid)}
 .nav-hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
 .nav-hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0)}
 .nav-hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+
 .nav-drawer{position:fixed;top:0;left:0;right:0;bottom:0;z-index:595;background:#0F1E38;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:32px;opacity:0;pointer-events:none;visibility:hidden;transition:opacity .32s,visibility .32s}
 .nav-drawer.open{opacity:1;pointer-events:all;visibility:visible}
 .nav-drawer .nav-links{display:flex;flex-direction:column;align-items:center;gap:24px;list-style:none;padding:0;margin:0}
 .nav-drawer .nav-links a{font-family:var(--f-ui);font-weight:500;font-size:.82rem;letter-spacing:5px;text-transform:uppercase;color:rgba(195,218,238,.8);text-decoration:none;transition:color .2s;display:block}
+.nav-drawer .nav-links a:hover,.nav-drawer .nav-links a:active{color:#fff}
 .nav-drawer .nav-links a::after{display:none}
-.nav-drawer .nav-tel{font-family:var(--f-ui);font-weight:600;font-size:.7rem;letter-spacing:2px;color:var(--gold-lt);text-decoration:none;border:1.5px solid rgba(200,150,12,.45);padding:14px 36px;transition:all .24s;display:inline-block}
+.nav-drawer .nav-tel{font-family:var(--f-ui);font-weight:600;font-size:.7rem;letter-spacing:2px;color:var(--gold-lt);text-decoration:none;border:1.5px solid rgba(200,150,12,.45);padding:14px 36px;transition:all .24s;white-space:nowrap;display:inline-block}
+.nav-drawer .nav-tel:hover{border-color:var(--gold-lt);background:rgba(200,150,12,.1)}
+
 
 /* ── ANIMATIONS ── */
 @keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
@@ -99,7 +121,7 @@ body{background:var(--off-white);font-family:var(--f-ui);font-weight:500;color:v
 .gold-grad{background:linear-gradient(110deg,#E8B84B 0%,#f5d97a 30%,#fff 50%,#E8B84B 75%,#C8960C 100%);background-size:200%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 
 /* ════════════════════════════════════
-   HERO — Full bleed, address search
+   HERO
 ════════════════════════════════════ */
 #buy-hero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden;background:var(--navy)}
 .buy-hero-bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=1600&auto=format&fit=crop&q=75') center/cover;opacity:.35}
@@ -113,7 +135,6 @@ body{background:var(--off-white);font-family:var(--f-ui);font-weight:500;color:v
 .buy-hero-h1{font-family:var(--f-head);font-weight:900;font-size:clamp(3.2rem,6vw,7rem);line-height:.86;letter-spacing:-3px;color:#F4F9FD;margin-bottom:24px;max-width:800px;opacity:0;animation:fadeUp .7s .5s forwards}
 .buy-hero-sub{font-family:var(--f-ui);font-weight:400;font-size:1rem;color:rgba(195,218,238,.5);line-height:1.8;max-width:480px;margin-bottom:40px;opacity:0;animation:fadeUp .7s .7s forwards}
 
-/* Address Search Bar */
 .address-bar{display:flex;gap:0;max-width:620px;opacity:0;animation:fadeUp .7s .9s forwards;box-shadow:0 16px 56px rgba(0,0,0,.35)}
 .address-input{flex:1;background:rgba(255,255,255,.97);border:none;padding:18px 24px;font-family:var(--f-ui);font-size:.9rem;color:var(--navy);outline:none}
 .address-input::placeholder{color:rgba(44,75,138,.35)}
@@ -121,7 +142,6 @@ body{background:var(--off-white);font-family:var(--f-ui);font-weight:500;color:v
 .address-btn:hover{background:var(--red-dark)}
 .address-note{font-family:var(--f-ui);font-size:.55rem;letter-spacing:2px;color:rgba(195,218,238,.3);margin-top:12px;opacity:0;animation:fadeUp .5s 1.1s forwards}
 
-/* Hero stats bottom */
 .buy-hero-stats{display:flex;gap:0;margin-top:60px;opacity:0;animation:fadeUp .6s 1.15s forwards}
 .buy-hero-stat{padding:20px 36px;border-right:1px solid rgba(44,75,138,.2);position:relative}
 .buy-hero-stat:first-child{padding-left:0}
@@ -129,7 +149,6 @@ body{background:var(--off-white);font-family:var(--f-ui);font-weight:500;color:v
 .buy-hero-stat-num{font-family:var(--f-head);font-weight:900;font-size:1.7rem;color:#fff;line-height:1}
 .buy-hero-stat-lbl{font-family:var(--f-ui);font-size:.5rem;letter-spacing:3px;text-transform:uppercase;color:rgba(195,218,238,.35);margin-top:4px}
 
-/* Ghost year */
 .buy-hero-ghost{position:absolute;bottom:32px;right:60px;z-index:2;text-align:right;opacity:0;animation:fadeUp .6s 1.2s forwards}
 .buy-hero-ghost-num{font-family:var(--f-head);font-weight:900;font-size:9rem;color:rgba(255,255,255,.03);line-height:1;letter-spacing:-6px}
 .buy-hero-ghost-lbl{font-family:var(--f-ui);font-size:.48rem;letter-spacing:5px;text-transform:uppercase;color:rgba(200,150,12,.3);margin-top:-18px}
@@ -145,59 +164,65 @@ body{background:var(--off-white);font-family:var(--f-ui);font-weight:500;color:v
 .marquee-item span{font-family:var(--f-ui);font-weight:600;font-size:.6rem;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,.9)}
 
 /* ════════════════════════════════════
-   WHAT WE BUY — Horizontal scroll cards
+   WHAT WE BUY — Redesigned: No emojis, editorial grid
 ════════════════════════════════════ */
 #what-we-buy{background:#fff;padding:96px 0 96px 60px;border-top:1px solid var(--border-l);overflow:hidden}
 .wwb-header{max-width:1200px;padding-right:60px;margin:0 auto 52px;display:grid;grid-template-columns:1fr auto;align-items:end;gap:32px}
 .wwb-scroll-wrap{overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;padding-bottom:4px}
 .wwb-scroll-wrap::-webkit-scrollbar{display:none}
 .wwb-scroll{display:flex;gap:3px;padding-right:60px;width:max-content}
-.wwb-card{width:260px;flex-shrink:0;background:var(--off-white);padding:40px 32px 36px;position:relative;overflow:hidden;cursor:default;transition:transform .3s,background .3s;border-top:2px solid transparent}
-.wwb-card:hover{transform:translateY(-5px);background:#fff;border-top-color:var(--red)}
-.wwb-card-icon{width:56px;height:56px;margin-bottom:20px;display:flex;align-items:center;justify-content:center;background:rgba(15,30,56,.05);border:1.5px solid rgba(44,75,138,.12)}
-.wwb-card-icon svg{width:26px;height:26px;color:var(--navy)}
-.wwb-card:hover .wwb-card-icon{background:rgba(178,34,52,.06);border-color:rgba(178,34,52,.2)}
-.wwb-card:hover .wwb-card-icon svg{color:var(--red)}
-.wwb-card-title{font-family:var(--f-head);font-weight:700;font-size:1.12rem;color:var(--navy);margin-bottom:8px;transition:color .26s}
+
+/* New editorial card design */
+.wwb-card{width:270px;flex-shrink:0;background:var(--off-white);padding:0;position:relative;overflow:hidden;cursor:default;transition:transform .3s,box-shadow .3s;border:1px solid var(--border-l)}
+.wwb-card:hover{transform:translateY(-6px);box-shadow:0 20px 48px rgba(15,30,56,.12)}
+.wwb-card-visual{height:110px;position:relative;overflow:hidden;display:flex;align-items:flex-end;padding:20px 24px}
+.wwb-card-visual-bg{position:absolute;inset:0;transition:transform .5s cubic-bezier(.2,.85,.3,1)}
+.wwb-card:hover .wwb-card-visual-bg{transform:scale(1.06)}
+.wwb-card-visual-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,30,56,.2) 0%,rgba(15,30,56,.75) 100%)}
+.wwb-card-num-big{font-family:var(--f-head);font-weight:900;font-size:4.5rem;color:rgba(255,255,255,.12);line-height:1;position:absolute;bottom:-8px;right:14px;pointer-events:none;z-index:1}
+.wwb-card-tag{position:relative;z-index:2;font-family:var(--f-ui);font-size:.48rem;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.6);background:rgba(178,34,52,.5);border:1px solid rgba(178,34,52,.5);padding:3px 10px;display:inline-block}
+.wwb-card-body-wrap{padding:22px 24px 26px}
+.wwb-card-title{font-family:var(--f-head);font-weight:700;font-size:1.08rem;color:var(--navy);margin-bottom:8px;transition:color .26s;line-height:1.2}
 .wwb-card:hover .wwb-card-title{color:var(--red)}
-.wwb-card-body{font-family:var(--f-ui);font-weight:400;font-size:.88rem;line-height:1.75;color:var(--blue-mid)}
-.wwb-card-num{position:absolute;bottom:-8px;right:14px;font-family:var(--f-head);font-weight:900;font-size:5rem;color:rgba(44,75,138,.04);line-height:1;pointer-events:none;transition:color .3s}
-.wwb-card:hover .wwb-card-num{color:rgba(178,34,52,.05)}
+.wwb-card-desc{font-family:var(--f-ui);font-weight:400;font-size:.86rem;line-height:1.72;color:var(--blue-mid)}
+.wwb-card-arrow{display:inline-flex;align-items:center;gap:6px;margin-top:14px;font-family:var(--f-ui);font-size:.52rem;letter-spacing:3px;text-transform:uppercase;color:var(--red);opacity:0;transform:translateX(-6px);transition:opacity .28s,transform .28s}
+.wwb-card:hover .wwb-card-arrow{opacity:1;transform:translateX(0)}
+
+/* Card visual backgrounds */
+.wwb-v1{background:linear-gradient(135deg,#1a2f52 0%,#0d1e38 50%,#2C4B8A 100%)}
+.wwb-v2{background:linear-gradient(135deg,#1e3a2a 0%,#0d2019 50%,#2a4a35 100%)}
+.wwb-v3{background:linear-gradient(135deg,#2a1f1a 0%,#1a0d0d 50%,#4a2a2a 100%)}
+.wwb-v4{background:linear-gradient(135deg,#1a1a0d 0%,#0d1205 50%,#3a3a18 100%)}
+.wwb-v5{background:linear-gradient(135deg,#1a1a2a 0%,#0d0d1e 50%,#2a2a4a 100%)}
+.wwb-v6{background:linear-gradient(135deg,#2a1a0d 0%,#1e0d05 50%,#4a3020 100%)}
+.wwb-v7{background:linear-gradient(135deg,#1a0d1a 0%,#150015 50%,#3a1a4a 100%)}
+
+/* SVG icons inside card visual */
+.wwb-card-icon-svg{position:absolute;top:18px;left:20px;z-index:2;opacity:.55;transition:opacity .3s}
+.wwb-card:hover .wwb-card-icon-svg{opacity:.85}
+.wwb-card-icon-svg svg{width:32px;height:32px;color:#fff;stroke-width:1.2}
+
 .wwb-scroll-btns{display:flex;gap:8px;margin-top:28px;padding-right:60px}
 .wwb-btn{width:44px;height:44px;border:1.5px solid var(--border-m);background:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .24s;color:var(--blue-mid)}
 .wwb-btn:hover{border-color:var(--red);background:var(--red);color:#fff}
 
 /* ════════════════════════════════════
-   OFFER CALCULATOR
+   SOCIAL PROOF / NUMBERS BAND
+   (Replaces urgency countdown)
 ════════════════════════════════════ */
-#calculator{background:var(--navy);padding:96px 60px;position:relative;overflow:hidden}
-#calculator::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 60% at 80% 50%,rgba(44,75,138,.25) 0%,transparent 65%);pointer-events:none}
-#calculator::after{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(232,184,75,.5) 50%,transparent)}
-.calc-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
-.calc-left{}
-.calc-eyebrow{font-family:var(--f-ui);font-size:.59rem;letter-spacing:5px;text-transform:uppercase;color:rgba(200,150,12,.65);display:block;margin-bottom:12px}
-.calc-title{font-family:var(--f-head);font-weight:900;font-size:clamp(2rem,3.5vw,3.2rem);line-height:1;color:#F4F9FD;margin-bottom:16px}
-.calc-title em{font-style:italic;color:var(--gold-lt)}
-.calc-sub{font-family:var(--f-ui);font-weight:400;font-size:.93rem;color:rgba(195,218,238,.45);line-height:1.82;margin-bottom:32px}
-.calc-disclaimer{font-family:var(--f-ui);font-size:.58rem;color:rgba(195,218,238,.22);line-height:1.6;letter-spacing:.5px;border-left:2px solid rgba(200,150,12,.2);padding-left:14px}
-
-/* Calc right */
-.calc-right{background:rgba(255,255,255,.04);border:1px solid rgba(44,75,138,.2);padding:44px 40px}
-.calc-slider-group{margin-bottom:32px}
-.calc-slider-label{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
-.calc-slider-name{font-family:var(--f-ui);font-size:.6rem;letter-spacing:3px;text-transform:uppercase;color:rgba(195,218,238,.45)}
-.calc-slider-val{font-family:var(--f-head);font-weight:700;font-size:1.05rem;color:var(--gold-lt)}
-.calc-range{-webkit-appearance:none;width:100%;height:3px;background:rgba(44,75,138,.3);outline:none;border-radius:0}
-.calc-range::-webkit-slider-thumb{-webkit-appearance:none;width:20px;height:20px;border-radius:50%;background:var(--red);cursor:pointer;border:2px solid rgba(255,255,255,.9);box-shadow:0 2px 12px rgba(178,34,52,.5);transition:transform .2s}
-.calc-range::-webkit-slider-thumb:hover{transform:scale(1.2)}
-.calc-range::-moz-range-thumb{width:20px;height:20px;border-radius:50%;background:var(--red);cursor:pointer;border:2px solid rgba(255,255,255,.9)}
-.calc-divider{height:1px;background:rgba(44,75,138,.2);margin:28px 0}
-.calc-result{text-align:center;padding:28px 24px;background:rgba(178,34,52,.08);border:1px solid rgba(178,34,52,.2);position:relative;overflow:hidden}
-.calc-result-label{font-family:var(--f-ui);font-size:.56rem;letter-spacing:4px;text-transform:uppercase;color:rgba(195,218,238,.4);margin-bottom:8px}
-.calc-result-num{font-family:var(--f-head);font-weight:900;font-size:2.8rem;color:#F4F9FD;line-height:1;transition:all .3s}
-.calc-result-sub{font-family:var(--f-ui);font-size:.56rem;letter-spacing:2px;text-transform:uppercase;color:rgba(200,150,12,.55);margin-top:6px}
-.calc-cta{display:block;text-align:center;margin-top:20px;font-family:var(--f-ui);font-weight:600;font-size:.63rem;letter-spacing:3px;text-transform:uppercase;color:#fff;background:var(--red);padding:14px;text-decoration:none;transition:background .24s}
-.calc-cta:hover{background:var(--red-dark)}
+#proof-band{background:var(--navy);position:relative;overflow:hidden;border-top:1px solid rgba(44,75,138,.15)}
+#proof-band::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 80% at 50% 50%,rgba(44,75,138,.18) 0%,transparent 70%)}
+#proof-band::after{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(232,184,75,.45) 50%,transparent)}
+.proof-band-inner{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+.proof-cell{padding:52px 40px;border-right:1px solid rgba(44,75,138,.18);position:relative;overflow:hidden;transition:background .3s}
+.proof-cell:hover{background:rgba(255,255,255,.02)}
+.proof-cell:last-child{border-right:none}
+.proof-cell-line{width:28px;height:2px;background:var(--red);margin-bottom:20px;transition:width .4s cubic-bezier(.2,.85,.3,1)}
+.proof-cell:hover .proof-cell-line{width:52px}
+.proof-cell-num{font-family:var(--f-head);font-weight:900;font-size:clamp(2.4rem,3.5vw,3.8rem);color:#F4F9FD;line-height:1;letter-spacing:-2px;margin-bottom:6px}
+.proof-cell-num em{font-style:normal;color:var(--gold-lt)}
+.proof-cell-label{font-family:var(--f-ui);font-weight:400;font-size:.82rem;color:rgba(195,218,238,.38);line-height:1.65;max-width:180px}
+.proof-cell-sub{font-family:var(--f-ui);font-size:.5rem;letter-spacing:3px;text-transform:uppercase;color:rgba(200,150,12,.5);margin-top:10px;display:block}
 
 /* ════════════════════════════════════
    VS COMPARISON — Editorial table
@@ -223,7 +248,7 @@ body{background:var(--off-white);font-family:var(--f-ui);font-weight:500;color:v
 .vs-col-badge{font-family:var(--f-ui);font-size:.48rem;letter-spacing:3px;text-transform:uppercase;padding:3px 10px;background:var(--red);color:#fff}
 
 /* ════════════════════════════════════
-   CONDITIONS GRID — Mosaic layout
+   CONDITIONS GRID — Redesigned: No emojis, architectural
 ════════════════════════════════════ */
 #conditions{background:var(--navy);padding:96px 60px;position:relative;overflow:hidden}
 #conditions::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 50% 60% at 20% 80%,rgba(178,34,52,.07) 0%,transparent 60%);pointer-events:none}
@@ -233,32 +258,18 @@ body{background:var(--off-white);font-family:var(--f-ui);font-weight:500;color:v
 .cond-item{background:rgba(255,255,255,.03);padding:36px 28px;position:relative;overflow:hidden;transition:background .3s;cursor:default;border-bottom:2px solid transparent}
 .cond-item:hover{background:rgba(255,255,255,.07);border-bottom-color:var(--red)}
 .cond-item.wide{grid-column:span 2}
-.cond-item-icon{font-size:2rem;margin-bottom:14px;display:block;filter:grayscale(30%)}
+/* SVG icon for conditions */
+.cond-icon-wrap{width:48px;height:48px;margin-bottom:18px;display:flex;align-items:center;justify-content:center;border:1px solid rgba(44,75,138,.25);position:relative;overflow:hidden;transition:border-color .3s,background .3s}
+.cond-item:hover .cond-icon-wrap{border-color:rgba(178,34,52,.4);background:rgba(178,34,52,.06)}
+.cond-icon-wrap svg{width:22px;height:22px;color:rgba(195,218,238,.45);transition:color .3s;stroke-width:1.3}
+.cond-item:hover .cond-icon-wrap svg{color:rgba(178,34,52,.8)}
 .cond-item-title{font-family:var(--f-head);font-weight:700;font-size:1.05rem;color:#F4F9FD;margin-bottom:6px}
 .cond-item-body{font-family:var(--f-ui);font-weight:400;font-size:.85rem;line-height:1.72;color:rgba(195,218,238,.4);transition:color .3s}
 .cond-item:hover .cond-item-body{color:rgba(195,218,238,.65)}
 .cond-item-tag{display:inline-block;font-family:var(--f-ui);font-size:.48rem;letter-spacing:3px;text-transform:uppercase;padding:3px 10px;background:rgba(200,150,12,.12);color:rgba(200,150,12,.7);margin-bottom:14px}
 
 /* ════════════════════════════════════
-   24HR URGENCY BAND
-════════════════════════════════════ */
-#urgency{background:var(--red);padding:64px 60px;position:relative;overflow:hidden}
-#urgency::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent 0,transparent 18px,rgba(255,255,255,.025) 18px,rgba(255,255,255,.025) 19px)}
-.urg-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr auto;gap:40px;align-items:center}
-.urg-left{}
-.urg-eyebrow{font-family:var(--f-ui);font-size:.56rem;letter-spacing:5px;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:10px}
-.urg-title{font-family:var(--f-head);font-weight:900;font-size:clamp(2rem,4vw,3.4rem);line-height:.95;color:#fff;margin-bottom:0}
-.urg-title em{font-style:italic;opacity:.7}
-.urg-clock{display:flex;gap:3px;align-items:stretch}
-.urg-unit{background:rgba(0,0,0,.2);padding:20px 24px;text-align:center;min-width:80px;position:relative}
-.urg-unit-num{font-family:var(--f-head);font-weight:900;font-size:2.4rem;color:#fff;line-height:1;display:block}
-.urg-unit-lbl{font-family:var(--f-ui);font-size:.45rem;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.5);margin-top:4px;display:block}
-.urg-sep{font-family:var(--f-head);font-weight:900;font-size:2rem;color:rgba(255,255,255,.3);display:flex;align-items:center;padding:0 2px}
-.urg-cta{margin-top:24px;display:inline-flex;align-items:center;gap:10px;font-family:var(--f-ui);font-weight:600;font-size:.63rem;letter-spacing:3px;text-transform:uppercase;color:#fff;text-decoration:none;border:1.5px solid rgba(255,255,255,.35);padding:12px 24px;transition:all .24s}
-.urg-cta:hover{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.6)}
-
-/* ════════════════════════════════════
-   PROCESS — Numbered diagonal
+   PROCESS
 ════════════════════════════════════ */
 #buy-process{background:var(--off-white);padding:96px 60px;border-top:1px solid var(--border-l);position:relative;overflow:hidden}
 .bp-inner{max-width:1200px;margin:0 auto}
@@ -278,7 +289,7 @@ body{background:var(--off-white);font-family:var(--f-ui);font-weight:500;color:v
 .bp-bottom-text strong{color:#F4F9FD;font-style:normal}
 
 /* ════════════════════════════════════
-   FAQ — Clean accordion
+   FAQ
 ════════════════════════════════════ */
 #faq{background:#fff;padding:96px 60px;border-top:1px solid var(--border-l)}
 .faq-inner{max-width:860px;margin:0 auto}
@@ -302,15 +313,26 @@ body{background:var(--off-white);font-family:var(--f-ui);font-weight:500;color:v
 .trust-cell:hover{box-shadow:0 6px 24px rgba(15,30,56,.07)}
 .trust-cell-icon{font-size:1.5rem;margin-bottom:8px;display:block}
 .trust-cell-label{font-family:var(--f-ui);font-size:.55rem;letter-spacing:2.5px;text-transform:uppercase;color:var(--blue-mid);line-height:1.6}
+.trust-cell-icon svg {
+  width: 28px;
+  height: 28px;
+  stroke: #d4af37; /* gold premium look */
+}
 
+.trust-cell-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+}
 /* ════════════════════════════════════
-   CTA — Final form section
+   CTA
 ════════════════════════════════════ */
 #buy-cta{position:relative;overflow:hidden;padding:112px 60px}
 .buy-cta-bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1400&auto=format&fit=crop&q=65') center/cover;filter:brightness(.28)saturate(.7)}
 .buy-cta-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(10,22,44,.88),rgba(178,34,52,.15))}
 .buy-cta-inner{position:relative;z-index:2;max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
-.buy-cta-left{}
+
 .buy-cta-eyebrow{font-family:var(--f-ui);font-size:.59rem;letter-spacing:5px;text-transform:uppercase;color:rgba(195,218,238,.5);display:block;margin-bottom:.8rem}
 .buy-cta-title{font-family:var(--f-head);font-weight:900;font-size:clamp(2.4rem,4.5vw,3.8rem);line-height:.95;color:#F4F9FD;margin-bottom:20px}
 .buy-cta-title em{font-style:italic;color:var(--gold-lt)}
@@ -321,7 +343,6 @@ body{background:var(--off-white);font-family:var(--f-ui);font-weight:500;color:v
 .buy-cta-trust-icon svg{width:10px;height:10px;color:var(--gold-lt)}
 .buy-cta-trust-text{font-family:var(--f-ui);font-weight:400;font-size:.85rem;color:rgba(195,218,238,.55)}
 
-/* Form */
 .buy-form{background:rgba(255,255,255,.97);padding:40px 36px}
 .buy-form-title{font-family:var(--f-head);font-weight:700;font-size:1.2rem;color:var(--navy);margin-bottom:6px}
 .buy-form-sub{font-family:var(--f-ui);font-size:.58rem;letter-spacing:2px;text-transform:uppercase;color:var(--blue-mid);margin-bottom:24px;opacity:.6}
@@ -336,17 +357,19 @@ body{background:var(--off-white);font-family:var(--f-ui);font-weight:500;color:v
 .form-submit:hover{background:var(--red-dark)}
 .form-note{font-family:var(--f-ui);font-size:.52rem;color:rgba(44,75,138,.4);text-align:center;margin-top:10px;letter-spacing:.5px}
 
-/* ════════════════════════════════════
-   FOOTER
-════════════════════════════════════ */
+/* FOOTER - ADJUSTED - INCREASED SIZE */
 footer{background:var(--navy);padding:4.8rem 5rem 2.4rem;border-top:2px solid var(--red)}
 footer::before{content:'';display:block;width:50px;height:2px;background:var(--red);margin-bottom:3.5rem;opacity:.42}
 .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3.5rem;margin-bottom:3.5rem}
-.logo-footer{font-family:var(--f-head);font-size:1.34rem;font-weight:700;color:#E8F2F9;letter-spacing:.5px;text-decoration:none}
-.logo-footer em{color:var(--red);font-style:normal}
+/* Footer logo image - ADJUSTED - INCREASED SIZE */
+.footer-logo-img{height:52px;width:auto;object-fit:contain;display:inline-block;vertical-align:middle;opacity:.9;transition:opacity .3s;filter:brightness(1.1)} /* Increased from 40px to 52px */
+.footer-logo-img:hover{opacity:1}
+.footer-brand{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.footer-brand-text{font-family:var(--f-head);font-weight:700;font-size:1.5rem;color:#E8F2F9;letter-spacing:.5px;text-decoration:none} /* Increased from 1.34rem */
+.footer-brand-text em{color:var(--gold);font-style:normal}
 .f-tagline{font-family:var(--f-ui);font-weight:400;font-size:.9rem;color:rgba(195,218,238,.36);margin-top:.52rem;line-height:1.8}
 .f-socials{display:flex;gap:.42rem;margin-top:1.25rem;flex-wrap:wrap}
-.f-soc{width:31px;height:31px;border:1px solid rgba(44,75,138,.26);display:flex;align-items:center;justify-content:center;cursor:pointer;color:rgba(195,218,238,.46);transition:border-color .26s,background .26s;text-decoration:none}
+.f-soc{width:31px;height:31px;border:1px solid rgba(44,75,138,.26);display:flex;align-items:center;justify-content:center;cursor:pointer;color:rgba(195,218,238,.46);transition:border-color .26s,background .26s}
 .f-soc:hover{border-color:var(--blue-mid);background:rgba(44,75,138,.13)}
 .f-col h4{font-family:var(--f-ui);font-weight:500;font-size:.55rem;letter-spacing:4px;text-transform:uppercase;color:rgba(195,218,238,.42);margin-bottom:1.15rem}
 .f-col ul{list-style:none;display:flex;flex-direction:column;gap:.52rem}
@@ -354,58 +377,192 @@ footer::before{content:'';display:block;width:50px;height:2px;background:var(--r
 .f-col ul a:hover{color:var(--red)}
 .footer-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.9rem;padding-top:1.75rem;border-top:1px solid rgba(44,75,138,.09)}
 .f-copy{font-family:var(--f-ui);font-weight:300;font-size:.54rem;letter-spacing:2px;color:rgba(195,218,238,.17);text-transform:uppercase}
-.f-copy a{color:rgba(195,218,238,.17);text-decoration:none;transition:color .22s}
+.f-copy a{color:rgba(195,218,238,.17);transition:color .22s}
 .f-copy a:hover{color:var(--red)}
+.f-col a.active-page{color:rgba(178,34,52,.75)}
 
 /* ════════════════════════════════════
    RESPONSIVE
 ════════════════════════════════════ */
+@media(max-width:1400px){
+  .proof-cell{padding:44px 32px}
+}
 @media(max-width:1200px){
-  #nav{padding:18px 32px}
-  #nav.stuck{padding:11px 32px}
-  .buy-hero-content{padding:130px 40px 60px}
-  .calc-inner{gap:48px}
+  #nav{padding:8px 28px}
+  #nav.stuck{padding:6px 28px}
+  .nav-links{gap:16px}
+  .nav-links a{font-size:.6rem}
   footer{padding:3.6rem 2.2rem 2.2rem}
   .footer-grid{grid-template-columns:1fr 1fr;gap:2.2rem}
+  .buy-hero-content{padding:130px 40px 60px}
 }
 @media(max-width:900px){
-  #nav{padding:14px 20px}
-  #nav.stuck{padding:10px 20px}
-  .nav-links,.nav-tel{display:none}
-  .nav-hamburger{display:flex}
-  .nav-brand-bot{display:none}
+  #nav{padding:10px 16px}#nav.stuck{padding:8px 16px}
+  .nav-links,.nav-tel{display:none}.nav-hamburger{display:flex}
+  footer{padding:3rem 1.5rem 2rem}
   .buy-hero-content{padding:110px 24px 52px}
   .address-bar{flex-direction:column}
   .address-btn{padding:15px 20px}
   .buy-hero-stats{flex-wrap:wrap;gap:0}
   .buy-hero-stat{padding:14px 20px;border-right:none;border-bottom:1px solid rgba(44,75,138,.15)}
-  .calc-inner{grid-template-columns:1fr}
   .vs-header{grid-template-columns:1fr}
   .cond-grid{grid-template-columns:1fr 1fr}
   .cond-item.wide{grid-column:span 2}
-  .urg-inner{grid-template-columns:1fr}
   .bp-steps{grid-template-columns:1fr;gap:40px}
   .bp-steps::before{display:none}
   .buy-cta-inner{grid-template-columns:1fr}
   .trust-inner{grid-template-columns:repeat(3,1fr)}
-  #what-we-buy,#calculator,#vs,#conditions,#urgency,#buy-process,#faq,#trust,#buy-cta{padding:70px 28px}
-  #what-we-buy{padding-left:28px}
-  footer{padding:3rem 1.4rem 1.7rem}
+  .proof-band-inner{grid-template-columns:repeat(2,1fr)}
+  .proof-cell{border-right:none;border-bottom:1px solid rgba(44,75,138,.15)}
+  .proof-cell:nth-child(odd){border-right:1px solid rgba(44,75,138,.15)}
+  #what-we-buy{padding:70px 0 70px 28px}
+  #vs,#conditions,#buy-process,#faq,#trust,#buy-cta{padding:70px 28px}
 }
 @media(max-width:768px){
-  .footer-grid{grid-template-columns:1fr 1fr;gap:1.7rem}
+  footer{padding:3rem 1.4rem 1.7rem}.footer-grid{grid-template-columns:1fr 1fr;gap:1.7rem}
   .cond-grid{grid-template-columns:1fr}
   .cond-item.wide{grid-column:span 1}
   .trust-inner{grid-template-columns:repeat(2,1fr)}
   .form-2col{grid-template-columns:1fr}
   .bp-header{grid-template-columns:1fr}
+  .proof-band-inner{grid-template-columns:1fr 1fr}
 }
 @media(max-width:480px){
-  #nav{padding:10px 14px}
-  .footer-grid{grid-template-columns:1fr;gap:1.5rem}
+  #nav{padding:8px 12px}.nav-logo-img{height:32px}
+  .nav-brand-text{font-size:.9rem}
+  footer{padding:2.5rem 1rem 1.35rem}.footer-grid{grid-template-columns:1fr;gap:1.55rem}
+  .footer-bottom{flex-direction:column;align-items:flex-start;gap:.4rem}
   .trust-inner{grid-template-columns:1fr 1fr}
-  .urg-clock{flex-wrap:wrap}
   .buy-hero-ghost{display:none}
+  .proof-band-inner{grid-template-columns:1fr}
+  .proof-cell{border-right:none !important}
+  #trust{padding:60px 20px}
+}
+
+/* 4K / large screens */
+@media(min-width:2000px){
+  #buy-hero{
+  min-height: clamp(500px, 70vh, 800px);
+}
+  .buy-hero-content{max-width:1600px;padding:160px 80px 100px}
+  #what-we-buy{padding:120px 0 120px 80px}
+  .wwb-header{max-width:1500px;padding-right:80px}
+  .wwb-scroll{padding-right:80px}
+  #vs,#conditions,#buy-process,#faq,#trust,#buy-cta{padding:120px 80px}
+  .vs-inner,.cond-inner,.bp-inner,.faq-inner{max-width:1500px}
+  .trust-inner{max-width:1400px}
+  .proof-band-inner{max-width:1800px}
+  .proof-cell{padding:64px 56px}
+  .proof-cell-num{font-size:4.5rem}
+  .wwb-card{width:320px}
+}
+@media(min-width:2560px){
+  body{font-size:18px}
+  .buy-hero-content{max-width:1800px}
+  #vs,#conditions,#buy-process,#faq,#buy-cta{padding:140px 100px}
+  .vs-inner,.cond-inner,.bp-inner,.faq-inner{max-width:1700px}
+  .proof-cell-num{font-size:5.5rem}
+}
+</style>
+
+
+<style>
+/* ── Form validation styles ── */
+.form-error{
+  font-family:var(--f-ui);font-size:.6rem;color:#c0392b;
+  margin-top:5px;letter-spacing:.3px;
+  display:none;align-items:center;gap:5px;
+}
+.form-error::before{
+  content:'';display:inline-block;width:12px;height:12px;flex-shrink:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='none' stroke='%23c0392b' stroke-width='2.5' stroke-linecap='round' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cline x1='12' y1='8' x2='12' y2='12'/%3E%3Cline x1='12' y1='16' x2='12.01' y2='16'/%3E%3C/svg%3E");
+  background-size:contain;background-repeat:no-repeat;
+}
+.form-row.has-error .form-input,
+.form-row.has-error .form-select{
+  border-color:#c0392b !important;
+  background:rgba(192,57,43,.04);
+}
+.form-row.has-error .form-error{display:flex}
+.form-row.is-valid .form-input,
+.form-row.is-valid .form-select{
+  border-color:rgba(39,174,96,.5) !important;
+}
+/* valid checkmark on right */
+.form-row.is-valid{position:relative}
+.form-row.is-valid::after{
+  content:'';position:absolute;right:12px;
+  width:16px;height:16px;top:calc(50% + 6px);
+  transform:translateY(-50%);pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='none' stroke='%2327ae60' stroke-width='2.5' stroke-linecap='round' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");
+  background-size:contain;background-repeat:no-repeat;
+}
+/* shake animation on error */
+@keyframes formShake{
+  0%,100%{transform:translateX(0)}
+  20%{transform:translateX(-6px)}
+  40%{transform:translateX(6px)}
+  60%{transform:translateX(-4px)}
+  80%{transform:translateX(4px)}
+}
+.shake{animation:formShake .38s cubic-bezier(.36,.07,.19,.97)}
+/* button spin */
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* modal close hover */
+#modal-close:hover,#modal-close-2:hover{border-color:var(--red);color:var(--red)}
+/* modal open state */
+#offer-modal.open{opacity:1;visibility:visible;pointer-events:all}
+#offer-modal.open #offer-modal-card{transform:translateY(0)}
+
+/* MODAL FIXES */
+#offer-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 999999 !important; /* Increased z-index to be above everything */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(10,18,36,.85); /* Slightly darker overlay */
+  backdrop-filter: blur(6px);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.4s cubic-bezier(.2,.85,.3,1), visibility 0.4s;
+}
+
+#offer-modal.open {
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: all !important;
+}
+
+#offer-modal-card {
+  background: #fff;
+  max-width: 480px;
+  width: calc(100% - 48px);
+  padding: 52px 44px;
+  position: relative;
+  transform: translateY(28px);
+  transition: transform 0.45s cubic-bezier(.2,.85,.3,1);
+  text-align: center;
+  z-index: 1000000;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+}
+
+#offer-modal.open #offer-modal-card {
+  transform: translateY(0);
+}
+
+/* Make sure close buttons are visible */
+#modal-close, #modal-close-2 {
+  cursor: pointer;
+  z-index: 1000001;
+}
+
+/* Ensure body doesn't scroll when modal is open */
+body.modal-open {
+  overflow: hidden;
 }
 </style>
 </head>
@@ -441,55 +598,41 @@ footer::before{content:'';display:block;width:50px;height:2px;background:var(--r
 <!-- NAV -->
 <nav id="nav">
   <a href="index.html" class="nav-brand">
-    <span class="nav-brand-top"><span>Wrangler</span> Homes</span>
-    <span class="nav-brand-bot">We Buy Homes · America</span>
+    <img src="assets/logown.png" alt="Wrangler Homes" class="nav-logo-img">
+    <span class="nav-brand-text"><span>Wrangler</span> Homes</span>
   </a>
   <ul class="nav-links">
-    <li><a href="index.html#about">About</a></li>
-    <li><a href="index.html#process">Process</a></li>
-    <li><a href="index.html#wrangler-footer">Contact</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="buy.html">Buy</a></li>
+    <li><a href="#buy-cta">Contact</a></li>
   </ul>
   <a href="tel:18772692267" class="nav-tel">1 (877) 269-2267</a>
   <button class="nav-hamburger" id="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
 </nav>
 <div class="nav-drawer" id="nav-drawer">
   <ul class="nav-links">
-    <li><a href="index.html#about">About</a></li>
-    <li><a href="index.html#process">Process</a></li>
-    <li><a href="index.html#wrangler-footer">Contact</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="buy.html">Buy</a></li>
+    <li><a href="#buy-cta">Contact</a></li>
   </ul>
   <a href="tel:18772692267" class="nav-tel">1 (877) 269-2267</a>
 </div>
 
-<!-- ══════════════════════════════════
-     HERO
-══════════════════════════════════ -->
+<!-- HERO -->
 <section id="buy-hero">
   <div class="buy-hero-bg"></div>
   <div class="buy-hero-overlay"></div>
   <div class="buy-hero-stripe"></div>
   <div class="buy-hero-gold"></div>
-
   <div class="buy-hero-content">
-    <div class="buy-hero-tag">
-      <div class="buy-hero-tag-dot"></div>
-      <span>Accepting Offers Nationwide · 24hr Response</span>
+   <div style="display:flex;align-items:center;gap:14px;margin-bottom:20px;opacity:0;animation:fadeUp .6s .45s forwards">
+      <span style="width:32px;height:1px;background:rgba(200,150,12,.5);display:inline-block;flex-shrink:0"></span>
+      <span style="font-family:var(--f-ui);font-size:.6rem;letter-spacing:6px;text-transform:uppercase;color:rgba(200,150,12,.7)">Est. 1994 &nbsp;·&nbsp; All 50 States</span>
     </div>
-
-    <h1 class="buy-hero-h1">
-      We Buy<br>
-      <em class="gold-grad">Any Home.</em><br>
-      Any Condition.
-    </h1>
-
+    <h1 class="buy-hero-h1">We Buy<br><em class="gold-grad">Any Home.</em><br>Any Condition.</h1>
     <p class="buy-hero-sub">Cash in hand within 7 days. No repairs. No agents. No fees. Just enter your address below and get a free written offer — no obligation, ever.</p>
 
-    <div class="address-bar">
-      <input class="address-input" type="text" placeholder="Enter your property address...">
-      <button class="address-btn">Get My Cash Offer →</button>
-    </div>
     <p class="address-note">✓ Free · No obligation · Response within 24 hours · All 50 states</p>
-
     <div class="buy-hero-stats">
       <div class="buy-hero-stat">
         <div class="buy-hero-stat-num">$500M+</div>
@@ -509,7 +652,6 @@ footer::before{content:'';display:block;width:50px;height:2px;background:var(--r
       </div>
     </div>
   </div>
-
   <div class="buy-hero-ghost">
     <div class="buy-hero-ghost-num">30</div>
     <div class="buy-hero-ghost-lbl">Years Trusted</div>
@@ -539,7 +681,7 @@ footer::before{content:'';display:block;width:50px;height:2px;background:var(--r
 </div>
 
 <!-- ══════════════════════════════════
-     WHAT WE BUY
+     WHAT WE BUY — Redesigned editorial cards
 ══════════════════════════════════ -->
 <section id="what-we-buy">
   <div class="wwb-header rv">
@@ -554,48 +696,133 @@ footer::before{content:'';display:block;width:50px;height:2px;background:var(--r
 
   <div class="wwb-scroll-wrap" id="wwb-scroll">
     <div class="wwb-scroll" id="wwb-track">
+
+      <!-- Card 1 -->
       <div class="wwb-card rv d1">
-        <div class="wwb-card-num">01</div>
-        <div class="wwb-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9.5z"/><path d="M9 21V12h6v9"/></svg></div>
-        <div class="wwb-card-title">Single Family Homes</div>
-        <p class="wwb-card-body">The classic American home — detached, any size, any age. Ranch-style, two-story, colonial or craftsman.</p>
+        <div class="wwb-card-visual">
+          <div class="wwb-card-visual-bg wwb-v1"></div>
+          <div class="wwb-card-visual-overlay"></div>
+          <div class="wwb-card-icon-svg">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9.5z"/><path d="M9 21V12h6v9"/></svg>
+          </div>
+          <span class="wwb-card-tag">Most Popular</span>
+          <div class="wwb-card-num-big">01</div>
+        </div>
+        <div class="wwb-card-body-wrap">
+          <div class="wwb-card-title">Single Family Homes</div>
+          <p class="wwb-card-desc">The classic American home — detached, any size, any age. Ranch-style, two-story, colonial or craftsman.</p>
+          <!-- <div class="wwb-card-arrow">Get Offer <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div> -->
+        </div>
       </div>
+
+      <!-- Card 2 -->
       <div class="wwb-card rv d2">
-        <div class="wwb-card-num">02</div>
-        <div class="wwb-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="2" y="7" width="20" height="15" rx="1"/><path d="M16 7V5a2 2 0 0 0-4 0v2M8 7V5a2 2 0 0 0-4 0v2"/><line x1="12" y1="12" x2="12" y2="17"/><line x1="9.5" y1="14.5" x2="14.5" y2="14.5"/></svg></div>
-        <div class="wwb-card-title">Multi-Family</div>
-        <p class="wwb-card-body">Duplexes, triplexes, fourplexes. Occupied or vacant, with or without tenants in place.</p>
+        <div class="wwb-card-visual">
+          <div class="wwb-card-visual-bg wwb-v2"></div>
+          <div class="wwb-card-visual-overlay"></div>
+          <div class="wwb-card-icon-svg">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="15" rx="1"/><path d="M16 7V5a2 2 0 0 0-4 0v2M8 7V5a2 2 0 0 0-4 0v2"/><line x1="12" y1="12" x2="12" y2="17"/><line x1="9.5" y1="14.5" x2="14.5" y2="14.5"/></svg>
+          </div>
+          <span class="wwb-card-tag">Investors Welcome</span>
+          <div class="wwb-card-num-big">02</div>
+        </div>
+        <div class="wwb-card-body-wrap">
+          <div class="wwb-card-title">Multi-Family</div>
+          <p class="wwb-card-desc">Duplexes, triplexes, fourplexes. Occupied or vacant, with or without tenants in place.</p>
+          <!-- <div class="wwb-card-arrow">Get Offer <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div> -->
+        </div>
       </div>
+
+      <!-- Card 3 -->
       <div class="wwb-card rv d3">
-        <div class="wwb-card-num">03</div>
-        <div class="wwb-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 22V12l8-8 8 8v10"/><path d="M12 14v8"/><rect x="8" y="18" width="3" height="4"/><rect x="13" y="18" width="3" height="4"/></svg></div>
-        <div class="wwb-card-title">Condos & Townhomes</div>
-        <p class="wwb-card-body">HOA or no HOA. Ground floor, top floor. We handle all title and association complexities ourselves.</p>
+        <div class="wwb-card-visual">
+          <div class="wwb-card-visual-bg wwb-v3"></div>
+          <div class="wwb-card-visual-overlay"></div>
+          <div class="wwb-card-icon-svg">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M4 22V12l8-8 8 8v10"/><path d="M12 14v8"/><rect x="8" y="18" width="3" height="4"/><rect x="13" y="18" width="3" height="4"/></svg>
+          </div>
+          <span class="wwb-card-tag">HOA Friendly</span>
+          <div class="wwb-card-num-big">03</div>
+        </div>
+        <div class="wwb-card-body-wrap">
+          <div class="wwb-card-title">Condos &amp; Townhomes</div>
+          <p class="wwb-card-desc">HOA or no HOA. Ground floor, top floor. We handle all title and association complexities ourselves.</p>
+          <!-- <div class="wwb-card-arrow">Get Offer <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div> -->
+        </div>
       </div>
+
+      <!-- Card 4 -->
       <div class="wwb-card rv d4">
-        <div class="wwb-card-num">04</div>
-        <div class="wwb-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M5 22V10L12 3l7 7v12"/><path d="M9 22v-8h6v8"/><path d="M12 3v8"/></svg></div>
-        <div class="wwb-card-title">Ranch & Land</div>
-        <p class="wwb-card-body">Working ranches, rural acreage, farms, and raw land. We buy across every rural county in America.</p>
+        <div class="wwb-card-visual">
+          <div class="wwb-card-visual-bg wwb-v4"></div>
+          <div class="wwb-card-visual-overlay"></div>
+          <div class="wwb-card-icon-svg">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M5 22V10L12 3l7 7v12"/><path d="M9 22v-8h6v8"/></svg>
+          </div>
+          <span class="wwb-card-tag">Rural &amp; Acreage</span>
+          <div class="wwb-card-num-big">04</div>
+        </div>
+        <div class="wwb-card-body-wrap">
+          <div class="wwb-card-title">Ranch &amp; Land</div>
+          <p class="wwb-card-desc">Working ranches, rural acreage, farms, and raw land. We buy across every rural county in America.</p>
+          <!-- <div class="wwb-card-arrow">Get Offer <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div> -->
+        </div>
       </div>
+
+      <!-- Card 5 -->
       <div class="wwb-card rv d5">
-        <div class="wwb-card-num">05</div>
-        <div class="wwb-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="2" y="3" width="20" height="18" rx="2"/><line x1="8" y1="21" x2="8" y2="3"/><line x1="16" y1="21" x2="16" y2="3"/><line x1="2" y1="9" x2="22" y2="9"/><line x1="2" y1="15" x2="22" y2="15"/></svg></div>
-        <div class="wwb-card-title">Vacant Properties</div>
-        <p class="wwb-card-body">Empty lots, abandoned homes, tax-delinquent properties. No matter how long it's been sitting.</p>
+        <div class="wwb-card-visual">
+          <div class="wwb-card-visual-bg wwb-v5"></div>
+          <div class="wwb-card-visual-overlay"></div>
+          <div class="wwb-card-icon-svg">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="18" rx="2"/><line x1="8" y1="21" x2="8" y2="3"/><line x1="16" y1="21" x2="16" y2="3"/><line x1="2" y1="9" x2="22" y2="9"/><line x1="2" y1="15" x2="22" y2="15"/></svg>
+          </div>
+          <span class="wwb-card-tag">Long Vacant OK</span>
+          <div class="wwb-card-num-big">05</div>
+        </div>
+        <div class="wwb-card-body-wrap">
+          <div class="wwb-card-title">Vacant Properties</div>
+          <p class="wwb-card-desc">Empty lots, abandoned homes, tax-delinquent properties. No matter how long it's been sitting.</p>
+          <!-- <div class="wwb-card-arrow">Get Offer <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div> -->
+        </div>
       </div>
+
+      <!-- Card 6 -->
       <div class="wwb-card rv d1">
-        <div class="wwb-card-num">06</div>
-        <div class="wwb-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg></div>
-        <div class="wwb-card-title">Inherited Properties</div>
-        <p class="wwb-card-body">Probate, estate sales, inherited clutter — we've navigated every legal complexity. You just sign.</p>
+        <div class="wwb-card-visual">
+          <div class="wwb-card-visual-bg wwb-v6"></div>
+          <div class="wwb-card-visual-overlay"></div>
+          <div class="wwb-card-icon-svg">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+          </div>
+          <span class="wwb-card-tag">Probate Ready</span>
+          <div class="wwb-card-num-big">06</div>
+        </div>
+        <div class="wwb-card-body-wrap">
+          <div class="wwb-card-title">Inherited Properties</div>
+          <p class="wwb-card-desc">Probate, estate sales, inherited clutter — we've navigated every legal complexity. You just sign.</p>
+          <!-- <div class="wwb-card-arrow">Get Offer <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div> -->
+        </div>
       </div>
+
+      <!-- Card 7 -->
       <div class="wwb-card rv d2">
-        <div class="wwb-card-num">07</div>
-        <div class="wwb-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
-        <div class="wwb-card-title">Distressed / Foreclosure</div>
-        <p class="wwb-card-body">Behind on payments, facing foreclosure? We move faster than the court calendar. Call us first.</p>
+        <div class="wwb-card-visual">
+          <div class="wwb-card-visual-bg wwb-v7"></div>
+          <div class="wwb-card-visual-overlay"></div>
+          <div class="wwb-card-icon-svg">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          </div>
+          <span class="wwb-card-tag">Act Fast</span>
+          <div class="wwb-card-num-big">07</div>
+        </div>
+        <div class="wwb-card-body-wrap">
+          <div class="wwb-card-title">Distressed / Foreclosure</div>
+          <p class="wwb-card-desc">Behind on payments, facing foreclosure? We move faster than the court calendar. Call us first.</p>
+          <!-- <div class="wwb-card-arrow">Get Offer <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div> -->
+        </div>
       </div>
+
     </div>
   </div>
   <div style="padding-left:0;max-width:1200px">
@@ -610,54 +837,7 @@ footer::before{content:'';display:block;width:50px;height:2px;background:var(--r
   </div>
 </section>
 
-<!-- ══════════════════════════════════
-     OFFER CALCULATOR
-══════════════════════════════════ -->
-<section id="calculator">
-  <div class="calc-inner">
-    <div class="calc-left rv-l">
-      <span class="calc-eyebrow">Estimate Your Offer</span>
-      <h2 class="calc-title">What Could Your<br>Home Be Worth <em>in Cash?</em></h2>
-      <p class="calc-sub">Use our estimate tool to get a ballpark figure before we talk. Every real offer is based on a full property review — but this gives you a solid starting point.</p>
-      <div class="calc-disclaimer">This calculator provides a rough estimate only. Your actual offer may vary based on property condition, local market data, and other factors. All formal offers are written and binding.</div>
-    </div>
-
-    <div class="calc-right rv-r">
-      <div class="calc-slider-group">
-        <div class="calc-slider-label">
-          <span class="calc-slider-name">Estimated Market Value</span>
-          <span class="calc-slider-val" id="val-market">$280,000</span>
-        </div>
-        <input type="range" class="calc-range" id="range-market" min="50000" max="1500000" step="5000" value="280000">
-      </div>
-      <div class="calc-slider-group">
-        <div class="calc-slider-label">
-          <span class="calc-slider-name">Property Condition</span>
-          <span class="calc-slider-val" id="val-cond">Good</span>
-        </div>
-        <input type="range" class="calc-range" id="range-cond" min="1" max="4" step="1" value="3">
-      </div>
-      <div class="calc-slider-group">
-        <div class="calc-slider-label">
-          <span class="calc-slider-name">Closing Timeline</span>
-          <span class="calc-slider-val" id="val-time">30 Days</span>
-        </div>
-        <input type="range" class="calc-range" id="range-time" min="1" max="4" step="1" value="2">
-      </div>
-      <div class="calc-divider"></div>
-      <div class="calc-result">
-        <div class="calc-result-label">Estimated Cash Offer Range</div>
-        <div class="calc-result-num" id="calc-output">$224,000 – $252,000</div>
-        <div class="calc-result-sub">Based on your inputs · No obligation</div>
-      </div>
-      <a href="#buy-cta" class="calc-cta">Get My Real Written Offer →</a>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════════════════════════════
-     VS COMPARISON
-══════════════════════════════════ -->
+<!-- VS COMPARISON -->
 <section id="vs">
   <div class="vs-inner">
     <div class="vs-header rv">
@@ -668,18 +848,15 @@ footer::before{content:'';display:block;width:50px;height:2px;background:var(--r
       <div style="background:var(--navy);padding:14px 24px;text-align:center;align-self:flex-end">
         <div style="font-family:var(--f-ui);font-size:.5rem;letter-spacing:3px;text-transform:uppercase;color:rgba(195,218,238,.4);margin-bottom:4px">Average Savings</div>
         <div style="font-family:var(--f-head);font-weight:900;font-size:1.6rem;color:var(--gold-lt)">$18,400</div>
-        <div style="font-family:var(--f-ui);font-size:.48rem;letter-spacing:2px;text-transform:uppercase;color:rgba(195,218,238,.3)">In fees & time costs</div>
+        <div style="font-family:var(--f-ui);font-size:.48rem;letter-spacing:2px;text-transform:uppercase;color:rgba(195,218,238,.3)">In fees &amp; time costs</div>
       </div>
     </div>
-
     <table class="vs-table rv">
       <thead>
         <tr>
           <th style="width:45%">What You're Comparing</th>
           <th style="width:27.5%">
-            <div class="vs-col-head">
-              <span>Traditional Agent</span>
-            </div>
+            <div class="vs-col-head"><span>Traditional Agent</span></div>
           </th>
           <th style="width:27.5%">
             <div class="vs-col-head">
@@ -706,7 +883,7 @@ footer::before{content:'';display:block;width:50px;height:2px;background:var(--r
           <td><div class="vs-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div> <span style="font-family:var(--f-ui);font-size:.75rem;color:var(--red);font-weight:600">Never</span></td>
         </tr>
         <tr>
-          <td>Open houses & showings</td>
+          <td>Open houses &amp; showings</td>
           <td><div class="vs-cross"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div> <span style="font-family:var(--f-ui);font-size:.75rem;color:rgba(44,75,138,.4)">Multiple required</span></td>
           <td><div class="vs-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div> <span style="font-family:var(--f-ui);font-size:.75rem;color:var(--red);font-weight:600">Zero</span></td>
         </tr>
@@ -730,38 +907,7 @@ footer::before{content:'';display:block;width:50px;height:2px;background:var(--r
   </div>
 </section>
 
-<!-- ══════════════════════════════════
-     URGENCY BAND
-══════════════════════════════════ -->
-<section id="urgency">
-  <div class="urg-inner rv">
-    <div class="urg-left">
-      <div class="urg-eyebrow">No Waiting. No Delays.</div>
-      <h2 class="urg-title">Your offer arrives in<br><em>under 24 hours.</em></h2>
-      <a href="#buy-cta" class="urg-cta">Start Now — It's Free →</a>
-    </div>
-    <div class="urg-clock">
-      <div class="urg-unit">
-        <span class="urg-unit-num" id="urg-h">23</span>
-        <span class="urg-unit-lbl">Hours</span>
-      </div>
-      <div class="urg-sep">:</div>
-      <div class="urg-unit">
-        <span class="urg-unit-num" id="urg-m">59</span>
-        <span class="urg-unit-lbl">Minutes</span>
-      </div>
-      <div class="urg-sep">:</div>
-      <div class="urg-unit">
-        <span class="urg-unit-num" id="urg-s">00</span>
-        <span class="urg-unit-lbl">Seconds</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════════════════════════════
-     CONDITIONS GRID
-══════════════════════════════════ -->
+<!-- CONDITIONS GRID — Redesigned with SVG icons -->
 <section id="conditions">
   <div class="cond-inner">
     <div class="cond-header rv">
@@ -771,44 +917,102 @@ footer::before{content:'';display:block;width:50px;height:2px;background:var(--r
     </div>
 
     <div class="cond-grid">
+      <!-- Wide card -->
       <div class="cond-item wide rv d1">
         <div class="cond-item-tag">Most Common</div>
-        <div class="cond-item-icon">🏚️</div>
+        <div class="cond-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 9.5L12 3l9 6.5V20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9.5z"/>
+            <path d="M9 21V12h6v9"/>
+            <line x1="12" y1="7" x2="12" y2="9"/>
+            <line x1="12" y1="10.5" x2="12" y2="11"/>
+          </svg>
+        </div>
         <div class="cond-item-title">Major Repair Needed</div>
         <p class="cond-item-body">Roof damage, foundation cracks, outdated electrical, plumbing failures, mold — we factor all of it into our offer and buy regardless. You never touch a tool.</p>
       </div>
+
       <div class="cond-item rv d2">
-        <div class="cond-item-icon">🔥</div>
+        <div class="cond-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2c0 0-6 4.5-6 10a6 6 0 0 0 12 0c0-5.5-6-10-6-10z"/>
+            <path d="M12 12c-1 0-2 .5-2.5 1.5"/>
+          </svg>
+        </div>
         <div class="cond-item-title">Fire or Water Damage</div>
         <p class="cond-item-body">Partial or complete damage. Smoke, flood, burst pipes. We assess and offer within 24 hours.</p>
       </div>
+
       <div class="cond-item rv d3">
-        <div class="cond-item-icon">⚖️</div>
+        <div class="cond-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/>
+            <polyline points="8 12 12 16 16 12"/>
+            <line x1="12" y1="8" x2="12" y2="16"/>
+          </svg>
+        </div>
         <div class="cond-item-title">Foreclosure / Pre-Foreclosure</div>
         <p class="cond-item-body">Behind on mortgage? We can often close before the foreclosure date. Call immediately.</p>
       </div>
+
       <div class="cond-item rv d1">
-        <div class="cond-item-icon">📋</div>
+        <div class="cond-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+            <polyline points="14 2 14 8 20 8"/>
+            <line x1="16" y1="13" x2="8" y2="13"/>
+            <line x1="16" y1="17" x2="8" y2="17"/>
+            <polyline points="10 9 9 9 8 9"/>
+          </svg>
+        </div>
         <div class="cond-item-title">Code Violations</div>
         <p class="cond-item-body">Unpermitted additions, zoning issues, open code cases — all navigated by our legal team.</p>
       </div>
+
       <div class="cond-item rv d2">
-        <div class="cond-item-icon">🧹</div>
-        <div class="cond-item-title">Inherited & Full of Stuff</div>
+        <div class="cond-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="21 8 21 21 3 21 3 8"/>
+            <rect x="1" y="3" width="22" height="5"/>
+            <line x1="10" y1="12" x2="14" y2="12"/>
+          </svg>
+        </div>
+        <div class="cond-item-title">Inherited &amp; Full of Stuff</div>
         <p class="cond-item-body">Leave it exactly as it is. We handle cleanout, donations, and disposal after closing.</p>
       </div>
+
       <div class="cond-item rv d3">
-        <div class="cond-item-icon">🏗️</div>
+        <div class="cond-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="6" width="20" height="12" rx="2"/>
+            <path d="M12 6V4M8 6V4M16 6V4"/>
+            <line x1="2" y1="12" x2="22" y2="12"/>
+          </svg>
+        </div>
         <div class="cond-item-title">Unfinished Construction</div>
         <p class="cond-item-body">Half-renovated, mid-project, permitted or not. We buy at a fair price for what exists today.</p>
       </div>
+
+      <div class="cond-item rv d1">
+  <div class="cond-icon-wrap">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+      <polyline points="14 2 14 8 20 8"/>
+      <line x1="16" y1="13" x2="8" y2="13"/>
+      <line x1="16" y1="17" x2="8" y2="17"/>
+      <polyline points="10 9 9 9 8 9"/>
+    </svg>
+  </div>
+  <div class="cond-item-title">Legal & Title Issues</div>
+  <p class="cond-item-body">Liens, disputes, or paperwork delays — we handle everything so you don’t have to.</p>
+</div>
     </div>
   </div>
+
+
 </section>
 
-<!-- ══════════════════════════════════
-     PROCESS
-══════════════════════════════════ -->
+<!-- PROCESS -->
 <section id="buy-process">
   <div class="bp-inner">
     <div class="bp-header rv">
@@ -818,7 +1022,6 @@ footer::before{content:'';display:block;width:50px;height:2px;background:var(--r
       </div>
       <p style="font-family:var(--f-ui);font-weight:400;font-size:.94rem;color:var(--blue-mid);line-height:1.85;max-width:380px">We designed this process specifically for sellers who don't want a process — they just want out, with cash in hand.</p>
     </div>
-
     <div class="bp-steps">
       <div class="bp-step rv d1">
         <div class="bp-step-circle"><span class="bp-step-circle-num">1</span></div>
@@ -835,11 +1038,10 @@ footer::before{content:'';display:block;width:50px;height:2px;background:var(--r
       <div class="bp-step rv d3">
         <div class="bp-step-circle"><span class="bp-step-circle-num">3</span></div>
         <div class="bp-step-label">Your Date, Your Terms</div>
-        <div class="bp-step-title">Close & Get Paid</div>
+        <div class="bp-step-title">Close &amp; Get Paid</div>
         <p class="bp-step-body">You pick the closing date — as fast as 7 days or up to 90. We handle all paperwork. Cash at close.</p>
       </div>
     </div>
-
     <div class="bp-bottom rv">
       <p class="bp-bottom-text">"<strong>100% of our written offers have been honored</strong> without exception since 1994. When we say yes — we mean it."</p>
       <a href="#buy-cta" class="btn-primary"><span>Get My Free Offer</span></a>
@@ -847,44 +1049,77 @@ footer::before{content:'';display:block;width:50px;height:2px;background:var(--r
   </div>
 </section>
 
-<!-- ══════════════════════════════════
-     TRUST SIGNALS
-══════════════════════════════════ -->
+
+<!-- TRUST SIGNALS -->
 <section id="trust">
   <div class="trust-inner">
+
     <div class="trust-cell rv d1">
-      <span class="trust-cell-icon">🔒</span>
+      <span class="trust-cell-icon">
+        <!-- Shield (No obligation) -->
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+          <path d="M12 3l7 4v5c0 5-3.5 8-7 9-3.5-1-7-4-7-9V7l7-4z"/>
+        </svg>
+      </span>
       <div class="trust-cell-label">No obligation<br>ever</div>
     </div>
+
     <div class="trust-cell rv d2">
-      <span class="trust-cell-icon">💵</span>
+      <span class="trust-cell-icon">
+        <!-- Dollar (No fees) -->
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+          <line x1="12" y1="2" x2="12" y2="22"/>
+          <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7H14.5a3.5 3.5 0 0 1 0 7H6"/>
+        </svg>
+      </span>
       <div class="trust-cell-label">Zero fees<br>charged</div>
     </div>
+
     <div class="trust-cell rv d3">
-      <span class="trust-cell-icon">📝</span>
+      <span class="trust-cell-icon">
+        <!-- Document (Offer) -->
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+          <polyline points="14 2 14 8 20 8"/>
+        </svg>
+      </span>
       <div class="trust-cell-label">Written &amp;<br>binding offer</div>
     </div>
+
     <div class="trust-cell rv d4">
-      <span class="trust-cell-icon">🗓️</span>
+      <span class="trust-cell-icon">
+        <!-- Calendar -->
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+          <rect x="3" y="4" width="18" height="18" rx="2"/>
+          <line x1="16" y1="2" x2="16" y2="6"/>
+          <line x1="8" y1="2" x2="8" y2="6"/>
+        </svg>
+      </span>
       <div class="trust-cell-label">You choose<br>closing date</div>
     </div>
+
     <div class="trust-cell rv d5">
-      <span class="trust-cell-icon">🇺🇸</span>
+      <span class="trust-cell-icon">
+        <!-- Globe -->
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+          <circle cx="12" cy="12" r="10"/>
+          <line x1="2" y1="12" x2="22" y2="12"/>
+          <path d="M12 2a15 15 0 0 1 0 20a15 15 0 0 1 0-20"/>
+        </svg>
+      </span>
       <div class="trust-cell-label">All 50 states<br>active</div>
     </div>
+
   </div>
 </section>
 
-<!-- ══════════════════════════════════
-     FAQ
-══════════════════════════════════ -->
+<!-- FAQ -->
 <section id="faq">
   <div class="faq-inner">
     <div class="faq-header rv">
       <span style="font-family:var(--f-ui);font-weight:500;font-size:.59rem;letter-spacing:5px;text-transform:uppercase;color:var(--red);display:block;margin-bottom:10px">Got Questions?</span>
       <h2 style="font-family:var(--f-head);font-weight:700;font-size:clamp(2rem,3.5vw,3rem);line-height:1.05;color:var(--navy)">The Answers You <em style="font-style:italic;color:var(--red)">Actually Need</em></h2>
     </div>
-
     <div class="faq-item rv d1">
       <div class="faq-q">
         <span class="faq-q-text">Is your cash offer really free with no obligation?</span>
@@ -892,7 +1127,6 @@ footer::before{content:'';display:block;width:50px;height:2px;background:var(--r
       </div>
       <div class="faq-a"><div class="faq-a-inner">Completely. We don't charge anything at any stage. Getting an offer from Wrangler Homes costs you nothing — not even your time. The whole initial assessment takes under 10 minutes, and you're never pressured to accept. If you don't like the offer, you walk away with no strings attached.</div></div>
     </div>
-
     <div class="faq-item rv d2">
       <div class="faq-q">
         <span class="faq-q-text">How do you determine the offer price?</span>
@@ -900,7 +1134,6 @@ footer::before{content:'';display:block;width:50px;height:2px;background:var(--r
       </div>
       <div class="faq-a"><div class="faq-a-inner">We analyze recent comparable sales in your area, the current condition of your property, local market trends, and your preferred timeline. Our offer reflects a fair market value adjusted for the speed and certainty we provide. You avoid agent fees (5–6%), repair costs, and carrying costs — many sellers net more with us than a traditional sale.</div></div>
     </div>
-
     <div class="faq-item rv d3">
       <div class="faq-q">
         <span class="faq-q-text">What if my home needs major repairs or has serious problems?</span>
@@ -908,7 +1141,6 @@ footer::before{content:'';display:block;width:50px;height:2px;background:var(--r
       </div>
       <div class="faq-a"><div class="faq-a-inner">That's exactly who we're designed for. We buy homes with foundation problems, roof damage, fire damage, water damage, code violations, mold, and every other issue you can think of. We price the offer fairly accounting for the condition — you never have to fix or clean anything. Leave it exactly as it is.</div></div>
     </div>
-
     <div class="faq-item rv d4">
       <div class="faq-q">
         <span class="faq-q-text">How fast can you really close?</span>
@@ -916,7 +1148,6 @@ footer::before{content:'';display:block;width:50px;height:2px;background:var(--r
       </div>
       <div class="faq-a"><div class="faq-a-inner">Our record is 4 days from first call to cash in hand. Realistically, most sellers close in 7–14 days when they want speed. There's no financing to wait on — we use our own cash. If you need more time, we can close up to 90 days out. You set the date; we build around it.</div></div>
     </div>
-
     <div class="faq-item rv d5">
       <div class="faq-q">
         <span class="faq-q-text">What happens after I accept the offer?</span>
@@ -924,7 +1155,6 @@ footer::before{content:'';display:block;width:50px;height:2px;background:var(--r
       </div>
       <div class="faq-a"><div class="faq-a-inner">We handle everything from that point forward. A title company is engaged, all paperwork is prepared, and you're guided through the signing process — in person or fully remote if you prefer. On the closing date, you sign the final documents and receive your funds. That's it. We even handle cleanout of any belongings left behind.</div></div>
     </div>
-
     <div class="faq-item rv d1">
       <div class="faq-q">
         <span class="faq-q-text">Do you buy in my state?</span>
@@ -935,9 +1165,7 @@ footer::before{content:'';display:block;width:50px;height:2px;background:var(--r
   </div>
 </section>
 
-<!-- ══════════════════════════════════
-     FINAL CTA WITH FORM
-══════════════════════════════════ -->
+<!-- CTA SECTION -->
 <section id="buy-cta">
   <div class="buy-cta-bg"></div>
   <div class="buy-cta-overlay"></div>
@@ -966,26 +1194,36 @@ footer::before{content:'';display:block;width:50px;height:2px;background:var(--r
       </div>
     </div>
 
-    <div class="buy-form rv-r">
+    <div class="buy-form rv-r" id="buy-form-wrap">
       <div class="buy-form-title">Get My Cash Offer</div>
       <div class="buy-form-sub">Free · No obligation · 24hr response</div>
-      <div class="form-row">
-        <label class="form-label">Property Address</label>
-        <input type="text" class="form-input" placeholder="123 Main St, City, State">
+
+      <!-- Address -->
+      <div class="form-row" id="field-address">
+        <label class="form-label" for="f-address">Property Address</label>
+        <input type="text" class="form-input" id="f-address" placeholder="123 Main St, City, State" autocomplete="street-address">
+        <div class="form-error" id="err-address">Please enter the property address</div>
       </div>
+
       <div class="form-2col">
-        <div class="form-row">
-          <label class="form-label">Your Name</label>
-          <input type="text" class="form-input" placeholder="Full name">
+        <!-- Name -->
+        <div class="form-row" id="field-name">
+          <label class="form-label" for="f-name">Your Name</label>
+          <input type="text" class="form-input" id="f-name" placeholder="Full name" autocomplete="name">
+          <div class="form-error" id="err-name">Please enter your full name</div>
         </div>
-        <div class="form-row">
-          <label class="form-label">Phone Number</label>
-          <input type="tel" class="form-input" placeholder="(555) 000-0000">
+        <!-- Phone -->
+        <div class="form-row" id="field-phone">
+          <label class="form-label" for="f-phone">Phone Number</label>
+          <input type="tel" class="form-input" id="f-phone" placeholder="(555) 000-0000" autocomplete="tel">
+          <div class="form-error" id="err-phone">Enter a valid 10-digit phone number</div>
         </div>
       </div>
-      <div class="form-row">
-        <label class="form-label">Property Condition</label>
-        <select class="form-select">
+
+      <!-- Condition -->
+      <div class="form-row" id="field-condition">
+        <label class="form-label" for="f-condition">Property Condition</label>
+        <select class="form-select" id="f-condition">
           <option value="">Select condition...</option>
           <option>Move-in ready / Good condition</option>
           <option>Needs minor repairs</option>
@@ -994,47 +1232,128 @@ footer::before{content:'';display:block;width:50px;height:2px;background:var(--r
           <option>Foreclosure / pre-foreclosure</option>
           <option>Inherited / estate sale</option>
         </select>
+        <div class="form-error" id="err-condition">Please select the property condition</div>
       </div>
-      <div class="form-row">
-        <label class="form-label">Ideal Closing Timeline</label>
-        <select class="form-select">
+
+      <!-- Timeline -->
+      <div class="form-row" id="field-timeline">
+        <label class="form-label" for="f-timeline">Ideal Closing Timeline</label>
+        <select class="form-select" id="f-timeline">
           <option value="">Select timeline...</option>
           <option>As fast as possible (7–14 days)</option>
           <option>Within 30 days</option>
           <option>Within 60 days</option>
           <option>Flexible (up to 90 days)</option>
         </select>
+        <div class="form-error" id="err-timeline">Please select your preferred timeline</div>
       </div>
-      <button class="form-submit">Get My Free Cash Offer →</button>
+
+      <button class="form-submit" id="form-submit-btn" type="button">
+        <span id="btn-label">Get My Free Cash Offer →</span>
+        <span id="btn-loading" style="display:none;align-items:center;gap:8px;justify-content:center">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" style="animation:spin .7s linear infinite"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+          Submitting...
+        </span>
+      </button>
       <p class="form-note">By submitting, you agree to be contacted by Wrangler Homes. No spam. No obligation.</p>
     </div>
   </div>
 </section>
 
+<!-- SUCCESS MODAL -->
+<div id="offer-modal" style="
+  position:fixed;inset:0;z-index:99000;
+  display:flex;align-items:center;justify-content:center;
+  background:rgba(10,18,36,.75);backdrop-filter:blur(6px);
+  opacity:0;visibility:hidden;pointer-events:none;
+  transition:opacity .4s cubic-bezier(.2,.85,.3,1),visibility .4s
+">
+  <div id="offer-modal-card" style="
+    background:#fff;max-width:480px;width:calc(100% - 48px);
+    padding:52px 44px;position:relative;
+    transform:translateY(28px);
+    transition:transform .45s cubic-bezier(.2,.85,.3,1);
+    text-align:center;
+  ">
+    <!-- top red bar -->
+    <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--red),var(--blue))"></div>
+    <!-- close -->
+    <button id="modal-close" style="
+      position:absolute;top:16px;right:16px;
+      width:32px;height:32px;border:1.5px solid var(--border-m);
+      background:none;cursor:pointer;display:flex;align-items:center;
+      justify-content:center;color:var(--blue-mid);transition:all .22s;
+    " aria-label="Close">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <!-- checkmark circle -->
+    <div style="
+      width:72px;height:72px;border-radius:50%;
+      background:rgba(178,34,52,.08);border:2px solid rgba(178,34,52,.2);
+      display:flex;align-items:center;justify-content:center;
+      margin:0 auto 24px;
+    ">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="2.2" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+    </div>
+    <div style="font-family:var(--f-head);font-weight:900;font-size:1.55rem;color:var(--navy);margin-bottom:10px;line-height:1.15">
+      Your Request Is In!
+    </div>
+    <div id="modal-name-line" style="font-family:var(--f-ui);font-size:.88rem;color:var(--blue-mid);line-height:1.75;margin-bottom:20px"></div>
+    <div style="
+      background:var(--off-white);border:1px solid var(--border-l);
+      padding:16px 20px;margin-bottom:24px;
+    ">
+      <div style="font-family:var(--f-ui);font-size:.5rem;letter-spacing:3px;text-transform:uppercase;color:rgba(44,75,138,.4);margin-bottom:4px">What happens next</div>
+      <div style="font-family:var(--f-ui);font-size:.85rem;color:var(--navy);line-height:1.7">
+        A Wrangler Homes specialist will call you within <strong>24 hours</strong> with your written cash offer — no pressure, no obligation.
+      </div>
+    </div>
+    <div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap">
+      <a href="tel:18772692267" style="
+        font-family:var(--f-ui);font-weight:600;font-size:.6rem;letter-spacing:3px;
+        text-transform:uppercase;color:#fff;background:var(--red);
+        padding:12px 24px;text-decoration:none;transition:background .22s;display:inline-block;
+      ">Call Now Instead</a>
+      <button id="modal-close-2" style="
+        font-family:var(--f-ui);font-weight:400;font-size:.6rem;letter-spacing:3px;
+        text-transform:uppercase;color:var(--blue-mid);background:none;
+        border:1.5px solid var(--border-m);padding:12px 24px;cursor:pointer;transition:all .22s;
+      ">Close</button>
+    </div>
+    <div style="font-family:var(--f-ui);font-size:.52rem;color:rgba(44,75,138,.35);margin-top:16px;letter-spacing:.5px">
+      Confirmation sent · Reference #WH-<span id="modal-ref"></span>
+    </div>
+  </div>
+</div>
+
+
 <!-- FOOTER -->
 <footer id="wrangler-footer">
   <div class="footer-grid">
     <div>
-      <a href="index.html" class="logo-footer">Wrangler <em>Homes</em></a>
+      <div class="footer-brand">
+        <img src="assets/logown.png" alt="Wrangler Homes" class="footer-logo-img">
+        <span class="footer-brand-text"><em>Wrangler</em> Homes</span>
+      </div>
       <p class="f-tagline">Buying homes with integrity since 1994.<br>Helping families sell fast, fair, and hassle-free across all fifty states.</p>
       <div class="f-socials">
-        <a href="https://www.facebook.com/wranglerhomes/" class="f-soc"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
-        <a href="https://www.instagram.com/wranglerhomes/" class="f-soc"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
-        <a href="https://www.youtube.com/wranglerhomes/" class="f-soc"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon fill="#0F1E38" points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg></a>
+        <a href="https://www.facebook.com/wranglerhomes/"><div class="f-soc"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></div></a>
+        <a href="https://www.instagram.com/wranglerhomes/"><div class="f-soc"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></div></a>
+        <a href="https://www.youtube.com/wranglerhomes/"><div class="f-soc"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon fill="#0F1E38" points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg></div></a>
       </div>
     </div>
     <div class="f-col"><h4>Properties</h4><ul><li><a href="#">Desert Villas</a></li><li><a href="#">Ranch Estates</a></li><li><a href="#">Land &amp; Lots</a></li><li><a href="#">Luxury Retreats</a></li><li><a href="#">Off-Grid Homes</a></li></ul></div>
-    <div class="f-col"><h4>Company</h4><ul><li><a href="about.html">About Us</a></li><li><a href="#">Our Agents</a></li><li><a href="#">Client Stories</a></li><li><a href="#">News &amp; Blog</a></li><li><a href="#">Careers</a></li></ul></div>
+    <div class="f-col"><h4>Company</h4><ul><li><a href="about.html">About Us</a></li><li><a href="buy.html" class="active-page">Buy</a></li><li><a href="about.html#stories">Client Stories</a></li><li><a href="#">News &amp; Blog</a></li><li><a href="privacy-policy.html">Privary Policy</a></li></ul></div>
     <div class="f-col"><h4>Contact</h4><ul>
-      <li><a href="mailto:sales@wranglerhomes.com">✉ sales@wranglerhomes.com</a></li>
-      <li><a href="tel:18772692267">☎ 1 (877) 269-2267</a></li>
-      <li><a>⚲ 7890 Desert Blvd, Scottsdale AZ</a></li>
-      <li><a>Mon–Fri 8am–8pm EST</a></li>
+      <li><a href="https://mail.google.com/mail/?view=cm&to=sales@wranglerhomes.com" target="_blank">✉ sales@wranglerhomes.com</a></li>
+      <li><a href="tel:+18005550199">☎ +1 (877)269-2267</a></li>
+      <li><a>⚲ 1095 old Roswell road, Alpharetta GA</a></li>
+      <li><a>Mon–Fri 9am–5pm EST</a></li>
     </ul></div>
   </div>
   <div class="footer-bottom">
     <p class="f-copy">© 2026 Wrangler Homes. All rights reserved.</p>
-    <p class="f-copy"><a href="#">Privacy Policy</a></p>
+    <p class="f-copy"><a href="privacy-policy.html">Privacy Policy</a></p>
   </div>
 </footer>
 
@@ -1062,47 +1381,45 @@ revEls.forEach(el=>obs.observe(el));
 window.addEventListener('load',()=>revEls.forEach(el=>{if(el.getBoundingClientRect().top<innerHeight)el.classList.add('on')}));
 
 /* ── CAROUSEL SCROLL ── */
-const track=document.getElementById('wwb-track');
 const scrollWrap=document.getElementById('wwb-scroll');
 document.getElementById('wwb-next').addEventListener('click',()=>scrollWrap.scrollBy({left:280,behavior:'smooth'}));
 document.getElementById('wwb-prev').addEventListener('click',()=>scrollWrap.scrollBy({left:-280,behavior:'smooth'}));
 
-/* ── CALCULATOR ── */
-const mkt=document.getElementById('range-market');
-const cond=document.getElementById('range-cond');
-const time=document.getElementById('range-time');
-const condLabels=['Poor','Fair','Good','Excellent'];
-const timeLabels=['7 Days','30 Days','60 Days','Flexible'];
-const condMulti=[0.68,0.76,0.84,0.90];
-const timeBonus=[0,0.01,0.02,0.03];
-
-function fmtMoney(n){return '$'+Math.round(n).toLocaleString('en-US')}
-function updateCalc(){
-  const v=parseInt(mkt.value);
-  const c=parseInt(cond.value)-1;
-  const t=parseInt(time.value)-1;
-  document.getElementById('val-market').textContent=fmtMoney(v);
-  document.getElementById('val-cond').textContent=condLabels[c];
-  document.getElementById('val-time').textContent=timeLabels[t];
-  const base=v*(condMulti[c]+timeBonus[t]);
-  const lo=base*0.94;
-  const hi=base*1.02;
-  document.getElementById('calc-output').textContent=fmtMoney(lo)+' – '+fmtMoney(hi);
+/* ── PROOF BAND — animated counters ── */
+function animateCounter(el,target,suffix,prefix){
+  const duration=1800;
+  const start=performance.now();
+  const isFloat=target%1!==0;
+  function step(now){
+    const progress=Math.min((now-start)/duration,1);
+    const ease=1-Math.pow(1-progress,4);
+    const val=target*ease;
+    const display=isFloat?val.toFixed(1):Math.floor(val).toLocaleString('en-US');
+    el.innerHTML=(prefix||'')+display+(suffix||'');
+    if(progress<1)requestAnimationFrame(step);
+    else el.innerHTML=(prefix||'')+target.toLocaleString('en-US')+(suffix||'');
+  }
+  requestAnimationFrame(step);
 }
-[mkt,cond,time].forEach(r=>r.addEventListener('input',updateCalc));
-updateCalc();
-
-/* ── COUNTDOWN CLOCK ── */
-function tickClock(){
-  const now=new Date();
-  const h=23-now.getHours();
-  const m=59-now.getMinutes();
-  const s=59-now.getSeconds();
-  document.getElementById('urg-h').textContent=String(h).padStart(2,'0');
-  document.getElementById('urg-m').textContent=String(m).padStart(2,'0');
-  document.getElementById('urg-s').textContent=String(s).padStart(2,'0');
-}
-tickClock();setInterval(tickClock,1000);
+const proofObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      const cells=e.target.querySelectorAll('.proof-cell-num');
+      cells.forEach(cell=>{
+        const data=cell.dataset;
+        if(data.animated)return;
+        data.animated='1';
+        const num=parseFloat(data.num);
+        const suffix=data.suffix||'';
+        const prefix=data.prefix||'';
+        animateCounter(cell,num,suffix,prefix);
+      });
+      proofObs.unobserve(e.target);
+    }
+  });
+},{threshold:.3});
+const pb=document.getElementById('proof-band');
+if(pb)proofObs.observe(pb);
 
 /* ── FAQ ACCORDION ── */
 document.querySelectorAll('.faq-q').forEach(q=>{
@@ -1120,7 +1437,140 @@ document.querySelector('.address-btn').addEventListener('click',()=>{
   if(val){document.getElementById('buy-cta').scrollIntoView({behavior:'smooth'})}
   else{document.querySelector('.address-input').focus()}
 });
+
+</script>
+
+
+
+<script>
+(function(){
+  /* ── helpers ── */
+  function setValid(fieldId){
+    const row=document.getElementById('field-'+fieldId);
+    if(!row)return;
+    row.classList.remove('has-error');
+    row.classList.add('is-valid');
+  }
+  function setError(fieldId){
+    const row=document.getElementById('field-'+fieldId);
+    if(!row)return;
+    row.classList.remove('is-valid');
+    row.classList.add('has-error');
+    row.classList.remove('shake');
+    void row.offsetWidth; // reflow
+    row.classList.add('shake');
+  }
+  function clearState(fieldId){
+    const row=document.getElementById('field-'+fieldId);
+    if(!row)return;
+    row.classList.remove('has-error','is-valid');
+  }
+
+  /* phone formatting */
+  const phoneEl=document.getElementById('f-phone');
+  phoneEl&&phoneEl.addEventListener('input',function(){
+    let v=this.value.replace(/\D/g,'').slice(0,10);
+    if(v.length>=7)v='('+v.slice(0,3)+') '+v.slice(3,6)+'-'+v.slice(6);
+    else if(v.length>=4)v='('+v.slice(0,3)+') '+v.slice(3);
+    else if(v.length)v='('+v;
+    this.value=v;
+  });
+
+  /* live validation on blur */
+  function validateAddress(){
+    const v=(document.getElementById('f-address').value||'').trim();
+    if(v.length<6){setError('address');return false;}
+    setValid('address');return true;
+  }
+  function validateName(){
+    const v=(document.getElementById('f-name').value||'').trim();
+    if(v.split(' ').filter(Boolean).length<2||v.length<4){setError('name');return false;}
+    setValid('name');return true;
+  }
+  function validatePhone(){
+    const v=(document.getElementById('f-phone').value||'').replace(/\D/g,'');
+    if(v.length!==10){setError('phone');return false;}
+    setValid('phone');return true;
+  }
+  function validateCondition(){
+    const v=document.getElementById('f-condition').value;
+    if(!v){setError('condition');return false;}
+    setValid('condition');return true;
+  }
+  function validateTimeline(){
+    const v=document.getElementById('f-timeline').value;
+    if(!v){setError('timeline');return false;}
+    setValid('timeline');return true;
+  }
+
+  document.getElementById('f-address').addEventListener('blur',validateAddress);
+  document.getElementById('f-name').addEventListener('blur',validateName);
+  document.getElementById('f-phone').addEventListener('blur',validatePhone);
+  document.getElementById('f-condition').addEventListener('change',validateCondition);
+  document.getElementById('f-timeline').addEventListener('change',validateTimeline);
+
+  /* clear error on focus */
+  ['address','name','phone'].forEach(id=>{
+    document.getElementById('f-'+id).addEventListener('focus',()=>clearState(id));
+  });
+
+  /* ── submit ── */
+  document.getElementById('form-submit-btn').addEventListener('click',function(){
+    const a=validateAddress();
+    const n=validateName();
+    const p=validatePhone();
+    const c=validateCondition();
+    const t=validateTimeline();
+
+    if(!(a&&n&&p&&c&&t)){
+      // scroll first error into view
+      const firstErr=document.querySelector('#buy-form-wrap .has-error');
+      if(firstErr)firstErr.scrollIntoView({behavior:'smooth',block:'center'});
+      return;
+    }
+
+    /* loading state */
+    const btn=this;
+    btn.disabled=true;
+    document.getElementById('btn-label').style.display='none';
+    document.getElementById('btn-loading').style.display='flex';
+
+    /* simulate API call */
+    setTimeout(()=>{
+      btn.disabled=false;
+      document.getElementById('btn-label').style.display='';
+      document.getElementById('btn-loading').style.display='none';
+      openModal();
+    },1400);
+  });
+
+  /* ── modal ── */
+  function openModal(){
+    const name=(document.getElementById('f-name').value||'').trim().split(' ')[0];
+    const addr=(document.getElementById('f-address').value||'').trim();
+    document.getElementById('modal-name-line').innerHTML=
+      'Thanks <strong>'+name+'</strong> — we\'ve received your request for <strong>'+addr+'</strong>.';
+    document.getElementById('modal-ref').textContent=
+      Math.floor(100000+Math.random()*900000);
+    const modal=document.getElementById('offer-modal');
+    modal.classList.add('open');
+    document.body.style.overflow='hidden';
+  }
+  function closeModal(){
+    const modal=document.getElementById('offer-modal');
+    modal.classList.remove('open');
+    document.body.style.overflow='';
+  }
+
+  document.getElementById('modal-close').addEventListener('click',closeModal);
+  document.getElementById('modal-close-2').addEventListener('click',closeModal);
+  document.getElementById('offer-modal').addEventListener('click',function(e){
+    if(e.target===this)closeModal();
+  });
+  document.addEventListener('keydown',function(e){
+    if(e.key==='Escape')closeModal();
+  });
+})();
 </script>
 </body>
 </html>
-
