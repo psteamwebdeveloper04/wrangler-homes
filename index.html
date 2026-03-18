@@ -59,14 +59,14 @@ body{background:var(--off-white);font-family:var(--f-ui);font-weight:500;color:v
 
 /* Desktop links */
 .nav-links{display:flex;gap:24px;list-style:none;margin:0;padding:0}
-.nav-links a{font-family:var(--f-ui);font-weight:400;font-size:.63rem;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.82);text-decoration:none;position:relative;transition:color .24s;white-space:nowrap}
+.nav-links a{font-family:var(--f-ui);font-weight:700;font-size:.78rem;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.82);text-decoration:none;position:relative;transition:color .24s;white-space:nowrap}
 .nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;right:100%;height:1px;background:#e63950;transition:right .34s cubic-bezier(.7,0,.3,1)}
 .nav-links a:hover{color:#fff}
 .nav-links a:hover::after{right:0}
 #nav.stuck .nav-links a{color:var(--blue-mid)}
 #nav.stuck .nav-links a:hover{color:var(--navy)}
 
-.nav-tel{font-family:var(--f-ui);font-weight:600;font-size:.63rem;letter-spacing:2px;color:#fff;background-color:#0b1b33;text-decoration:none;border:1.5px solid rgba(255,255,255,.35);padding:8px 18px;transition:all .24s;white-space:nowrap;flex-shrink:0}
+.nav-tel{font-family:var(--f-ui);font-weight:700;font-size:.78rem;letter-spacing:2px;color:#fff;background-color:#0b1b33;text-decoration:none;border:1.5px solid rgba(255,255,255,.35);padding:8px 18px;transition:all .24s;white-space:nowrap;flex-shrink:0}
 .nav-tel:hover{border-color:#e63950;background:rgba(178,34,52,.18)}
 #nav.stuck .nav-tel{color:var(--gold);border-color:rgba(178,34,52,.35)}
 #nav.stuck .nav-tel:hover{border-color:var(--red);background:rgba(178,34,52,.07)}
@@ -104,7 +104,7 @@ body{background:var(--off-white);font-family:var(--f-ui);font-weight:500;color:v
 .hero-h1{font-family:var(--f-head);font-weight:900;font-size:clamp(3.8rem,8vw,8.5rem);line-height:.9;letter-spacing:-1.5px}
 .hero-h1 .line{display:block;overflow:hidden}
 .hero-h1 .line span{display:block;opacity:0;transform:translateY(108%)}
-.hero-h1 .l1 span{color:#fff;text-shadow:0 2px 22px rgba(0,0,0,.48);animation:slideUp .82s .53s cubic-bezier(.16,1,.3,1) forwards}
+.hero-h1 .l1 span{color:#fff;text-shadow:0 2px 22px rgba(0,0,0,.48);line-height: 132px; animation:slideUp .82s .53s cubic-bezier(.16,1,.3,1) forwards}
 .hero-h1 .l2 span{font-style:italic;background:linear-gradient(110deg,#E8B84B 0%,#f5d97a 18%,#ffffff 34%,#E8B84B 52%,#f0c84a 68%,#ffffff 82%,#C8960C 100%);background-size:230% 100%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;filter:drop-shadow(0 2px 5px rgba(0,0,0,.4));animation:slideUp .82s .72s cubic-bezier(.16,1,.3,1) forwards,goldSweep 5.5s 2.2s ease-in-out infinite}
 @keyframes goldSweep{0%,100%{background-position:115% 50%}46%,54%{background-position:4% 50%}}
 .hero-divider{width:0;height:1px;background:linear-gradient(90deg,rgba(255,255,255,.42),transparent);margin:19px 0;animation:expandLine .88s 1.32s cubic-bezier(.7,0,.3,1) forwards}
@@ -204,7 +204,7 @@ body{background:var(--off-white);font-family:var(--f-ui);font-weight:500;color:v
 
 .ww-title{
   font-family:var(--f-head);font-weight:900;
-  font-size:clamp(2.6rem,5vw,4.2rem);
+  font-size:clamp(2.4rem,5vw,2.8rem);
   line-height:.95;color:#F4F9FD;
   margin-bottom:16px;
 }
@@ -359,7 +359,7 @@ body{background:var(--off-white);font-family:var(--f-ui);font-weight:500;color:v
 @media(max-width:768px){.ww-grid{grid-template-columns:1fr 1fr};#why-wrangler{padding:64px 24px}}
 @media(max-width:480px){.ww-grid{grid-template-columns:1fr};#why-wrangler{padding:48px 16px}}
 
-/* ABOUT */
+/* ABOUT
 .section{padding:94px 60px;position:relative}
 .about{background:#fff}
 .about-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:start}
@@ -379,7 +379,410 @@ body{background:var(--off-white);font-family:var(--f-ui);font-weight:500;color:v
 .landscape-frame{box-shadow:8px 10px 42px var(--shadow)}
 .frame-border{background:linear-gradient(135deg,var(--blue),var(--blue-mid) 45%,var(--blue));padding:2px}
 .frame-inset{border:2px solid rgba(44,75,138,.26);padding:3px}
-.frame-caption{background:var(--navy);text-align:center;padding:7px 10px;font-family:var(--f-ui);font-weight:400;font-size:.51rem;letter-spacing:4px;color:rgba(195,218,238,.62);text-transform:uppercase}
+.frame-caption{background:var(--navy);text-align:center;padding:7px 10px;font-family:var(--f-ui);font-weight:400;font-size:.51rem;letter-spacing:4px;color:rgba(195,218,238,.62);text-transform:uppercase} */
+
+/* ── HOMES FOR TROOPS SECTION (WHITE BACKGROUND) ── */
+/* ── HOMES FOR TROOPS SECTION (WHITE BACKGROUND) ── */
+#homes-for-troops {
+  background: #ffffff;
+  position: relative;
+  overflow: hidden;
+  padding: 96px 60px;
+  border-bottom: 1px solid rgba(44,75,138,.15);
+  box-sizing: border-box;
+}
+
+#homes-for-troops::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 70% 50% at 70% 30%, rgba(178,34,52,.05) 0%, transparent 70%),
+              radial-gradient(ellipse 40% 60% at 20% 80%, rgba(200,150,12,.04) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+#homes-for-troops::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(45deg, transparent 0, transparent 14px, rgba(200,150,12,.02) 14px, rgba(200,150,12,.02) 15px);
+  pointer-events: none;
+}
+
+#homes-for-troops .troops-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+#homes-for-troops .troops-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 52px;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+#homes-for-troops .troops-content {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity .8s cubic-bezier(.2,.85,.3,1), transform .8s cubic-bezier(.2,.85,.3,1);
+  min-width: 0; /* FIXES text overflow in grid */
+  word-break: break-word;
+}
+
+#homes-for-troops .troops-content.on {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+#homes-for-troops .troops-title {
+  font-family: var(--f-head);
+  font-weight: 900;
+  font-size: clamp(2.4rem, 4.5vw, 4.2rem);
+  line-height: .95;
+  color: #1a2b4c;
+  margin-bottom: 24px;
+  word-break: break-word;
+}
+
+#homes-for-troops .troops-title em {
+  font-style: italic;
+  background: linear-gradient(110deg, #b8860b 0%, #daa520 40%, #f5e6b3 60%, #b8860b 100%);
+  background-size: 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gSweep 5s ease-in-out infinite;
+}
+
+@keyframes gSweep {
+  0%, 100% { background-position: 0% }
+  50% { background-position: 100% }
+}
+
+#homes-for-troops .troops-quote {
+  font-family: var(--f-ui);
+  font-weight: 400;
+  font-size: 1.18rem;
+  line-height: 1.65;
+  color: #4a5568;
+  margin-bottom: 18px;
+  position: relative;
+  padding-left: 24px;
+  border-left: 3px solid var(--red);
+  font-style: italic;
+  word-break: break-word;
+}
+
+#homes-for-troops .troops-quote::before {
+  content: '"';
+  font-family: var(--f-head);
+  font-size: 3rem;
+  color: rgba(200,150,12,.15);
+  position: absolute;
+  top: -15px;
+  left: -8px;
+}
+
+#homes-for-troops .troops-donate-line {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 36px 0 0;
+  padding: 24px 0 0;
+  border-top: 1px solid rgba(200,150,12,.25);
+}
+
+#homes-for-troops .troops-donate-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(178,34,52,.1);
+  border: 1px solid rgba(200,150,12,.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+#homes-for-troops .troops-donate-icon svg {
+  width: 22px;
+  height: 22px;
+  color: #b8860b;
+}
+
+#homes-for-troops .troops-donate-text {
+  font-family: var(--f-ui);
+  font-weight: 400;
+  font-size: .9rem;
+  color: #64748b;
+  line-height: 1.6;
+  min-width: 0;
+}
+
+#homes-for-troops .troops-donate-text strong {
+  color: #b8860b;
+  font-weight: 600;
+}
+
+/* IMAGE WRAP — extra padding for badge overflow */
+#homes-for-troops .troops-image-wrap {
+  position: relative;
+  opacity: 0;
+  transform: translateX(30px);
+  transition: opacity .8s .15s cubic-bezier(.2,.85,.3,1), transform .8s .15s cubic-bezier(.2,.85,.3,1);
+  padding-top: 20px;
+  padding-left: 20px;
+  box-sizing: border-box;
+  min-width: 0;
+  width: 100%;
+}
+
+#homes-for-troops .troops-image-wrap.on {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+#homes-for-troops .troops-image-frame {
+  position: relative;
+  border: 2px solid rgba(200,150,12,.3);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 30px 60px rgba(0,0,0,.15);
+  width: 100%;
+}
+
+#homes-for-troops .troops-image-frame::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border: 8px solid rgba(26,43,76,.5);
+  border-radius: 8px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+#homes-for-troops .troops-image-frame::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), var(--red), var(--gold), transparent);
+  z-index: 2;
+}
+
+#homes-for-troops .troops-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  filter: grayscale(20%) contrast(1.05);
+  transition: filter .5s, transform .8s;
+  object-fit: cover;
+}
+
+#homes-for-troops .troops-image-wrap:hover .troops-image {
+  filter: grayscale(0%) contrast(1);
+  transform: scale(1.02);
+}
+
+#homes-for-troops .troops-badge {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 60px;
+  height: 60px;
+  background: var(--red);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid var(--gold);
+  box-shadow: 0 5px 20px rgba(178,34,52,.3);
+  z-index: 4;
+}
+
+#homes-for-troops .troops-badge svg {
+  width: 28px;
+  height: 28px;
+  color: #fff;
+}
+
+#homes-for-troops .troops-badge-text {
+  position: absolute;
+  top: 46px;
+  left: 36px;
+  background: #ffffff;
+  padding: 4px 10px;
+  font-family: var(--f-ui);
+  font-size: .5rem;
+  letter-spacing: 2px;
+  color: #b8860b;
+  border: 1px solid rgba(200,150,12,.3);
+  white-space: nowrap;
+  box-shadow: 0 2px 8px rgba(0,0,0,.05);
+  z-index: 5;
+}
+
+#homes-for-troops .troops-flag-strip {
+  display: flex;
+  gap: 2px;
+  margin-top: 24px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+#homes-for-troops .troops-flag-strip span {
+  width: 24px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--red), #f5e6b3, var(--red));
+  border-radius: 2px;
+  opacity: .5;
+}
+
+/* ── TABLET ── */
+@media (max-width: 900px) {
+  #homes-for-troops {
+    padding: 64px 32px;
+  }
+
+  #homes-for-troops .troops-grid {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  #homes-for-troops .troops-image-wrap {
+    transform: translateY(30px);
+    width: 100%;
+    max-width: 520px;
+    margin: 0 auto;
+  }
+
+  #homes-for-troops .troops-image-wrap.on {
+    transform: translateY(0);
+  }
+
+  #homes-for-troops .troops-title {
+    font-size: clamp(2rem, 5.5vw, 3rem);
+  }
+}
+
+/* ── MOBILE ── */
+@media (max-width: 600px) {
+  #homes-for-troops {
+    padding: 48px 18px;
+  }
+
+  #homes-for-troops .troops-title {
+    font-size: clamp(1.8rem, 7.5vw, 2.4rem);
+    line-height: 1.05;
+    margin-bottom: 16px;
+  }
+
+  #homes-for-troops .troops-quote {
+    font-size: .95rem;
+    padding-left: 14px;
+    line-height: 1.6;
+  }
+
+  #homes-for-troops .troops-quote::before {
+    font-size: 2.2rem;
+    top: -10px;
+  }
+
+  #homes-for-troops .troops-donate-line {
+    gap: 12px;
+    margin-top: 24px;
+    padding-top: 18px;
+  }
+
+  #homes-for-troops .troops-donate-icon {
+    width: 38px;
+    height: 38px;
+  }
+
+  #homes-for-troops .troops-donate-icon svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  #homes-for-troops .troops-donate-text {
+    font-size: .82rem;
+  }
+
+  #homes-for-troops .troops-image-wrap {
+    padding-top: 16px;
+    padding-left: 16px;
+    max-width: 100%;
+  }
+
+  #homes-for-troops .troops-badge {
+    width: 46px;
+    height: 46px;
+    top: 0;
+    left: 0;
+  }
+
+  #homes-for-troops .troops-badge svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  #homes-for-troops .troops-badge-text {
+    top: 34px;
+    left: 28px;
+    font-size: .42rem;
+    padding: 3px 7px;
+    letter-spacing: 1.2px;
+  }
+
+  #homes-for-troops .troops-image-frame::before {
+    border-width: 4px;
+  }
+}
+
+/* ── VERY SMALL ── */
+@media (max-width: 360px) {
+  #homes-for-troops {
+    padding: 40px 12px;
+  }
+
+  #homes-for-troops .troops-title {
+    font-size: 1.65rem;
+  }
+
+  #homes-for-troops .troops-donate-line {
+    flex-wrap: wrap;
+  }
+
+  #homes-for-troops .troops-image-wrap {
+    padding-top: 14px;
+    padding-left: 14px;
+  }
+
+  #homes-for-troops .troops-badge {
+    width: 40px;
+    height: 40px;
+  }
+
+  #homes-for-troops .troops-badge svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  #homes-for-troops .troops-badge-text {
+    top: 28px;
+    left: 22px;
+    font-size: .38rem;
+  }
+}
+
 
 /* Reveal */
 .rev-left{opacity:0;transform:translateX(-42px);transition:opacity .78s,transform .78s}
@@ -818,10 +1221,58 @@ body{background:var(--off-white);font-family:var(--f-ui);font-weight:500;color:v
 #why{background:#fff;padding:110px 80px;border-top:1px solid var(--border-l)}
 .why-inner{max-width:1200px;margin:0 auto}
 .s-body{font-family:var(--f-ui);font-weight:400;font-size:.98rem;line-height:1.8;color:var(--blue-mid)}
-.arrow-link{display:inline-flex;align-items:center;gap:12px;font-family:var(--f-ui);font-weight:500;font-size:.64rem;letter-spacing:5px;text-transform:uppercase;color:var(--red);text-decoration:none;margin-top:30px;transition:gap .3s}
-.arrow-link::after{content:'';width:28px;height:1px;background:var(--red);transition:width .3s}
-.arrow-link:hover{gap:17px}
-.arrow-link:hover::after{width:50px}
+
+/* ===== SOLID RED LUXURY BUTTON ===== */
+
+.arrow-link{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 14px 34px;
+  font-family: var(--f-ui);
+  font-weight: 500;
+  font-size: 0.7rem;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  text-decoration: none;
+  margin-top: 20px;
+
+  background: var(--red); /* solid red */
+  color: #fff; /* clean white text */
+
+  border-radius: 40px;
+  transition: all 0.35s ease;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+}
+
+/* arrow line */
+.arrow-link::after{
+  content:'';
+  width: 22px;
+  height: 1px;
+  background: #fff;
+  transition: width 0.3s ease;
+}
+
+/* hover effect */
+.arrow-link:hover{
+  transform: translateY(-3px);
+  box-shadow:
+    0 12px 30px rgba(0,0,0,0.35),
+    0 0 10px rgba(255, 0, 0, 0.4); /* subtle glow */
+}
+
+/* arrow expand */
+.arrow-link:hover::after{
+  width: 36px;
+}
+
+/* click effect */
+.arrow-link:active{
+  transform: translateY(0);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+}
 .why-layout{display:grid;grid-template-columns:1fr 2fr;gap:86px;align-items:start;margin-top:50px}
 .why-left{position:sticky;top:110px}
 .why-right{display:flex;flex-direction:column}
@@ -857,14 +1308,206 @@ body{background:var(--off-white);font-family:var(--f-ui);font-weight:500;color:v
 /* TESTIMONIALS */
 #testimonials{background:var(--off-white);padding:94px 0;border-top:1px solid var(--border-l)}
 .test-head{padding:0 78px 50px}
-.test-scroll-wrap{overflow:hidden;padding:0 78px}
-.test-track{display:flex;gap:2px;width:max-content}
-.test-card{background:#fff;border:1px solid var(--border-l);width:396px;flex-shrink:0;padding:40px 36px;position:relative;overflow:hidden;transition:border-color .3s,box-shadow .3s}
-.test-card::before{content:'\201C';position:absolute;top:-8px;left:18px;font-family:var(--f-head);font-size:6.2rem;font-weight:900;color:rgba(44,75,138,.06);line-height:1;pointer-events:none}
-.test-card:hover{border-color:var(--border-m);box-shadow:0 4px 24px rgba(15,30,56,.07)}
-.test-body{font-family:var(--f-ui);font-style:italic;font-weight:400;font-size:.98rem;line-height:1.76;color:var(--blue-mid);margin-bottom:20px;position:relative;z-index:1}
-.test-author{font-family:var(--f-ui);font-weight:600;font-size:.63rem;letter-spacing:3px;text-transform:uppercase;color:var(--navy)}
-.test-loc{font-family:var(--f-ui);font-weight:400;font-size:.57rem;letter-spacing:2px;text-transform:uppercase;color:rgba(44,75,138,.4);margin-top:3px}
+/* ── Scroll wrap ── */
+.test-scroll-wrap {
+  overflow: hidden;
+  position: relative;
+  padding: 0;
+}
+
+/* Fade edges */
+.test-scroll-wrap::before,
+.test-scroll-wrap::after {
+  content: '';
+  position: absolute;
+  top: 0; bottom: 0;
+  width: 130px;
+  z-index: 2;
+  pointer-events: none;
+}
+/* .test-scroll-wrap::before { left: 0;  background: linear-gradient(to right, var(--off-white), transparent); }
+.test-scroll-wrap::after  { right: 0; background: linear-gradient(to left,  var(--off-white), transparent); } */
+
+/* ── Track ── */
+.test-track {
+  display: flex;
+  gap: 0;
+  width: max-content;
+  animation: tscroll 42s linear infinite;
+  padding: 10px 0 28px;
+}
+.test-track:hover { animation-play-state: paused; }
+
+@keyframes tscroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ── Card wrapper (photo + card stacked) ── */
+.test-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 12px;
+  cursor: default;
+}
+
+/* ── Photo sits ABOVE the card ── */
+.test-photo-wrap {
+  position: relative;
+  z-index: 2;
+  margin-bottom: -28px; /* overlaps into card */
+}
+.test-photo {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #fff;
+  box-shadow: 0 4px 18px rgba(15,30,56,.13);
+  display: block;
+  transition: transform .4s cubic-bezier(.22,1,.36,1), box-shadow .4s;
+}
+.test-item:hover .test-photo {
+  transform: scale(1.08) translateY(-4px);
+  box-shadow: 0 10px 30px rgba(15,30,56,.18);
+}
+
+/* ── Card ── */
+.test-card {
+  background: #fff;
+  border: 1px solid var(--border-l);
+  width: 360px;
+  flex-shrink: 0;
+  padding: 46px 32px 32px;
+  border-radius: 18px;
+  position: relative;
+  overflow: hidden;
+  transition: transform .4s cubic-bezier(.22,1,.36,1),
+              box-shadow .4s cubic-bezier(.22,1,.36,1),
+              border-color .3s;
+}
+.test-item:hover .test-card {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 48px rgba(15,30,56,.1);
+  border-color: var(--border-m);
+}
+
+/* Navy accent stripe on top on hover */
+.test-card::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--blue-mid), var(--navy));
+  border-radius: 18px 18px 0 0;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .4s cubic-bezier(.22,1,.36,1);
+}
+.test-item:hover .test-card::after { transform: scaleX(1); }
+
+/* Big decorative quote mark */
+.test-card::before {
+  content: '\201C';
+  position: absolute;
+  top: 2px; left: 20px;
+  font-family: var(--f-head);
+  font-size: 5.5rem;
+  font-weight: 900;
+  color: rgba(44,75,138,.06);
+  line-height: 1;
+  pointer-events: none;
+  transition: color .4s;
+}
+.test-item:hover .test-card::before { color: rgba(44,75,138,.1); }
+
+/* Stars inside card */
+.test-card-stars {
+  display: flex;
+  gap: 3px;
+  margin-bottom: 14px;
+}
+.test-card-star {
+  width: 11px; height: 11px;
+  background: #d4a847;
+  clip-path: polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%);
+  transition: transform .3s;
+}
+.test-item:hover .test-card-star { transform: scale(1.15); }
+
+/* Quote body */
+.test-body {
+  font-family: var(--f-ui);
+  font-style: italic;
+  font-weight: 400;
+  font-size: .95rem;
+  line-height: 1.78;
+  color: var(--blue-mid);
+  margin-bottom: 22px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Divider */
+.test-divider {
+  height: 1px;
+  background: var(--border-l);
+  margin-bottom: 16px;
+  transition: background .3s;
+}
+.test-item:hover .test-divider { background: var(--border-m); }
+
+/* Author row */
+.test-author {
+  font-family: var(--f-ui);
+  font-weight: 600;
+  font-size: .61rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--navy);
+}
+.test-loc {
+  font-family: var(--f-ui);
+  font-weight: 400;
+  font-size: .55rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(44,75,138,.4);
+  margin-top: 3px;
+}
+
+/* ── Bottom trust strip ── */
+.test-trust {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  margin-top: 54px;
+  padding: 0 78px;
+  flex-wrap: wrap;
+}
+.test-trust-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--f-ui);
+  font-size: .58rem;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: rgba(44,75,138,.5);
+}
+.test-trust-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--blue-mid);
+  opacity: .4;
+}
+.test-trust-sep {
+  width: 1px; height: 20px;
+  background: var(--border-l);
+}
 
 /* FOOTER - ADJUSTED - INCREASED SIZE */
 footer{background:var(--navy);padding:4.8rem 5rem 2.4rem;border-top:2px solid var(--red)}
@@ -988,6 +1631,13 @@ footer::before{content:'';display:block;width:50px;height:2px;background:var(--r
   .sdec-orbs{grid-template-columns:1fr}.sorb{padding:30px 20px 26px}
   .sdec-hero{padding:44px 16px 32px}.sdec-tl{padding:26px 14px 40px}
   .hero-form-wrap{max-width:100%}
+  .hero-h1 .l1 span{line-height: 44px;}
+  .ww-title{
+  font-family:var(--f-head);font-weight:900;
+  font-size:clamp(2rem,5vw,2rem);
+  line-height: 30px;
+  margin-top: 15px;
+}
 }
 </style>
 </head>
@@ -1048,7 +1698,7 @@ footer::before{content:'';display:block;width:50px;height:2px;background:var(--r
 <section id="hero">
   <div class="hero-stripe"></div>
   <div class="hero-gold-line"></div>
-  <video id="hero-video" autoplay muted loop playsinline preload="auto" src="assets/Wrangler Homes website renew render .mp4"></video>
+  <video id="hero-video" autoplay muted loop playsinline preload="auto" src="assets/wrangler-video.mp4"></video>
   <div class="hero-split">
     <div class="hero-left">
       <div class="hero-eyebrow">Est. 1994 &nbsp;&bull;&nbsp; All 50 States &nbsp;&bull;&nbsp; Cash Offers</div>
@@ -1184,7 +1834,7 @@ footer::before{content:'';display:block;width:50px;height:2px;background:var(--r
   <div class="process-inner">
     <div class="process-header">
       <span class="eyebrow" style="color:rgba(200,150,12,.7)">Simple &amp; Straightforward</span>
-      <h2 class="sec-title-dark" style="color:#F4F9FD">Three Steps to <em style="color:var(--gold-lt)">Your Cash Offer</em></h2>
+      <h2  style="color:#F4F9FD" class="ww-title">Three Steps to <em style="color:var(--gold-lt)"  class="ww-title" >Your Cash Offer</em></h2>
       <div class="ornate-row"><div class="ornate-icon">
         <svg viewBox="0 0 14 14" fill="currentColor"><path d="M7 0l1.5 5H14l-4.5 3.3 1.7 5.2L7 10.4l-4.2 3.1 1.7-5.2L0 5h5.5z"/></svg>
         <svg viewBox="0 0 14 14" fill="currentColor"><path d="M7 0l1.5 5H14l-4.5 3.3 1.7 5.2L7 10.4l-4.2 3.1 1.7-5.2L0 5h5.5z"/></svg>
@@ -1238,7 +1888,7 @@ footer::before{content:'';display:block;width:50px;height:2px;background:var(--r
 </section>
 
 <!-- ABOUT -->
-<section class="section about" id="about">
+<!-- <section class="section about" id="about">
   <div class="about-grid">
     <div class="rev-left">
       <span class="eyebrow">About Wrangler Homes</span>
@@ -1254,6 +1904,52 @@ footer::before{content:'';display:block;width:50px;height:2px;background:var(--r
           <img src="https://images.unsplash.com/photo-1499696562547-dbe51006e1bb?w=600&auto=format&fit=crop&q=68" width="100%" height="455" style="object-fit:cover;display:block" alt="American Heartland">
         </div></div>
         <div class="frame-caption">The American Heartland · Where Every Home Has a Story</div>
+      </div>
+    </div>
+  </div>
+</section> -->
+
+<!-- ══════════════════════════════════
+     TROOPS
+══════════════════════════════════ -->
+<section id="homes-for-troops">
+  <div class="troops-inner">
+    <div class="troops-grid">
+      <!-- Left Content -->
+      <div class="troops-content rv">
+        <h2 class="troops-title">HOMES <em>for</em> TROOPS</h2>
+        <div class="troops-quote">
+          "We make recurring donations to veteran-focused organizations"
+        </div>
+        <div class="troops-donate-line">
+          <div class="troops-donate-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/><line x1="6" y1="12" x2="6" y2="15"/><line x1="10" y1="14" x2="10" y2="17"/>
+            </svg>
+          </div>
+          <div class="troops-donate-text">
+            <strong>Every home purchase</strong> contributes to our recurring donations supporting veterans and their families across America.
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Image-->
+      <div class="troops-image-wrap rv-r">
+        <div class="troops-image-frame">
+          <img src="assets/troops.jpg"
+               alt="Homes for Troops - Supporting American Veterans"
+               class="troops-image"
+               style="width:100%; height: 440px; aspect-ratio:3/2; object-fit:cover;">
+        </div>
+        <div class="troops-badge">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+          </svg>
+        </div>
+        <div class="troops-badge-text">VETERAN SUPPORT</div>
+        <div class="troops-flag-strip">
+          <span></span><span></span><span></span><span></span><span></span>
+        </div>
       </div>
     </div>
   </div>
@@ -1486,14 +2182,97 @@ footer::before{content:'';display:block;width:50px;height:2px;background:var(--r
     <div class="s-label">What Sellers Say</div>
     <h2 class="s-h2">Real People. <em>Real Deals.</em></h2>
   </div>
+
+  <!-- Scroll Track -->
   <div class="test-scroll-wrap">
     <div class="test-track" id="test-track">
-      <div class="test-card"><p class="test-body">I had tried listing my father's ranch for six months with no luck. Wrangler Homes called back the same day, gave a fair offer, and we closed in nine days.</p><div class="test-author">Robert M.</div><div class="test-loc">Lubbock, Texas</div></div>
-      <div class="test-card"><p class="test-body">Inherited a house I had no idea what to do with. They explained everything without pressure and the price was honest. No one tried to take advantage of me.</p><div class="test-author">Sarah K.</div><div class="test-loc">Bozeman, Montana</div></div>
-      <div class="test-card"><p class="test-body">We were facing foreclosure and needed out fast. Wrangler Homes closed in under two weeks. Saved us from the worst situation we had ever been in.</p><div class="test-author">James &amp; Linda T.</div><div class="test-loc">Nashville, Tennessee</div></div>
-      <div class="test-card"><p class="test-body">Sold a property that needed serious work — roof, foundation, the works. They bought it exactly as it stood. No repair requests, no credit demands. Done.</p><div class="test-author">Marcus D.</div><div class="test-loc">Shreveport, Louisiana</div></div>
-      <div class="test-card"><p class="test-body">These people operate with integrity I did not think existed in real estate anymore. Felt like dealing with a neighbor, not a corporation.</p><div class="test-author">Carol W.</div><div class="test-loc">Cheyenne, Wyoming</div></div>
-    </div>
+
+      <!-- Card 1 -->
+      <div class="test-item">
+        <div class="test-photo-wrap">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=144&h=144&fit=crop&crop=face&auto=format&q=85" alt="Robert M." class="test-photo">
+        </div>
+        <div class="test-card">
+          <div class="test-card-stars">
+            <div class="test-card-star"></div><div class="test-card-star"></div>
+            <div class="test-card-star"></div><div class="test-card-star"></div><div class="test-card-star"></div>
+          </div>
+          <p class="test-body">I had tried listing my father’s ranch for six months with no success. Wrangler Homes responded the same day, presented a fair and honest offer, and we closed smoothly in just nine days.</p>
+          <div class="test-divider"></div>
+          <div class="test-author">Robert M.</div>
+          <div class="test-loc">Lubbock, Texas</div>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="test-item">
+        <div class="test-photo-wrap">
+          <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=144&h=144&fit=crop&crop=face&auto=format&q=85" alt="Sarah K." class="test-photo">
+        </div>
+        <div class="test-card">
+          <div class="test-card-stars">
+            <div class="test-card-star"></div><div class="test-card-star"></div>
+            <div class="test-card-star"></div><div class="test-card-star"></div><div class="test-card-star"></div>
+          </div>
+          <p class="test-body">Inherited a house I had no idea what to do with. They explained everything without pressure and the price was honest. No one tried to take advantage of me.</p>
+          <div class="test-divider"></div>
+          <div class="test-author">Sarah K.</div>
+          <div class="test-loc">Bozeman, Montana</div>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="test-item">
+        <div class="test-photo-wrap">
+          <img src="https://images.unsplash.com/photo-1552058544-f2b08422138a?w=144&h=144&fit=crop&crop=face&auto=format&q=85" alt="James & Linda T." class="test-photo">
+        </div>
+        <div class="test-card">
+          <div class="test-card-stars">
+            <div class="test-card-star"></div><div class="test-card-star"></div>
+            <div class="test-card-star"></div><div class="test-card-star"></div><div class="test-card-star"></div>
+          </div>
+          <p class="test-body">We were facing foreclosure and needed out fast. Wrangler Homes closed in under two weeks — they truly saved us from the most difficult situation we had ever been in.</p>
+          <div class="test-divider"></div>
+          <div class="test-author">James &amp; Linda T.</div>
+          <div class="test-loc">Nashville, Tennessee</div>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="test-item">
+        <div class="test-photo-wrap">
+          <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=144&h=144&fit=crop&crop=face&auto=format&q=85" alt="Marcus D." class="test-photo">
+        </div>
+        <div class="test-card">
+          <div class="test-card-stars">
+            <div class="test-card-star"></div><div class="test-card-star"></div>
+            <div class="test-card-star"></div><div class="test-card-star"></div><div class="test-card-star"></div>
+          </div>
+          <p class="test-body">Sold a property that needed serious work — roof, foundation, the works. They bought it exactly as it stood. No repair requests, no credit demands. Done.</p>
+          <div class="test-divider"></div>
+          <div class="test-author">Marcus D.</div>
+          <div class="test-loc">Shreveport, Louisiana</div>
+        </div>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="test-item">
+        <div class="test-photo-wrap">
+          <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=144&h=144&fit=crop&crop=face&auto=format&q=85" alt="Carol W." class="test-photo">
+        </div>
+        <div class="test-card">
+          <div class="test-card-stars">
+            <div class="test-card-star"></div><div class="test-card-star"></div>
+            <div class="test-card-star"></div><div class="test-card-star"></div><div class="test-card-star"></div>
+          </div>
+          <p class="test-body">These people operate with a level of integrity I did not think existed in real estate anymore. It truly felt like dealing with a trusted neighbor, not a corporation.</p>
+          <div class="test-divider"></div>
+          <div class="test-author">Carol W.</div>
+          <div class="test-loc">Cheyenne, Wyoming</div>
+        </div>
+      </div>
+
+    </div><!-- end test-track -->
   </div>
 </section>
 
@@ -1522,7 +2301,9 @@ footer::before{content:'';display:block;width:50px;height:2px;background:var(--r
     <div class="why-layout">
       <div class="why-left rv-l">
         <p class="s-body">We are not a listing service. We are buyers — direct, committed, and present from first call to closing day.</p>
-        <a href="#hero" class="arrow-link">Start Now</a>
+        <a href="#hero" class="arrow-link">
+          <span>Start Now</span>
+       </a>
       </div>
       <div class="why-right">
         <div class="why-item rv d1"><div class="wi-num">01</div><div class="wi-body"><h3>No Repairs Required</h3><p>Sell as-is. Inherited estate, foreclosure, water damage — we have seen it all and bought it all.</p></div></div>
@@ -1712,6 +2493,21 @@ window.addEventListener('load',()=>revEls.forEach(el=>{if(el.getBoundingClientRe
   }, {threshold:.2});
   cards.forEach(c => wwObs.observe(c));
 })();
+
+/* SCROLL REVEAL for TROOPS */
+document.addEventListener('DOMContentLoaded', function() {
+  const troopsEls = document.querySelectorAll('#homes-for-troops .rv, #homes-for-troops .rv-r');
+  const troopsObs = new IntersectionObserver(entries => {
+    entries.forEach((e, i) => {
+      if(e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('on'), i * 150);
+        troopsObs.unobserve(e.target);
+      }
+    });
+  }, { threshold: .2 });
+
+  troopsEls.forEach(el => troopsObs.observe(el));
+});
 
 /* COMPARISON TABLE ROW ANIMATIONS */
 (function(){
