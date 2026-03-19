@@ -1,0 +1,12 @@
+# Robots.txt for Wrangler Homes
+
+User-agent: *
+Allow: /
+
+# Block unnecessary folders
+Disallow: /admin/
+Disallow: /test/
+Disallow: /tmp/
+
+# Sitemap location
+Sitemap: https://wranglerhomes.com/sitemap.xml
