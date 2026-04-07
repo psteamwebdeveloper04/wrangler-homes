@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -191,6 +192,8 @@ body{background:var(--off-white);font-family:var(--f-ui);font-weight:500;color:v
 .hf-btn:hover::before{clip-path:polygon(0 0,100% 0,100% 100%,0 100%)}
 .hf-btn:hover{transform:translateY(-2px)}
 .hf-btn span{position:relative;z-index:1}
+.hf-back{background:var(--blue);box-shadow:0 4px 18px rgba(44,75,138,.4)}
+.hf-back::before{background:var(--blue-mid)}
 .hf-note{text-align:center;margin-top:8px;font-family:var(--f-ui);font-size:.55rem;letter-spacing:2px;text-transform:uppercase;color:rgba(155,182,220,.32)}
 @keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
 @keyframes slideUp{from{opacity:0;transform:translateY(108%)}to{opacity:1;transform:translateY(0)}}
@@ -1766,26 +1769,36 @@ footer::before{content:'';display:block;width:50px;height:2px;background:var(--r
         <div class="hf-title">Get a <span>Free</span> Cash Offer</div>
         <div class="hf-sub">No obligation · Reply within 24 hours</div>
         <div class="hf-divider"></div>
-        <div class="form-grid">
-          <div class="form-row" id="row-fname"><label>First Name *</label><input id="f-fname" type="text" placeholder="John"><span class="err-msg">Required</span></div>
-          <div class="form-row" id="row-lname"><label>Last Name *</label><input id="f-lname" type="text" placeholder="Smith"><span class="err-msg">Required</span></div>
+        <div class="form-step" id="step-1">
+          <div class="form-grid">
+            <div class="form-row" id="row-fname"><label>First Name *</label><input id="f-fname" type="text" placeholder="John"><span class="err-msg">Required</span></div>
+            <div class="form-row" id="row-lname"><label>Last Name *</label><input id="f-lname" type="text" placeholder="Smith"><span class="err-msg">Required</span></div>
+          </div>
+          <div class="form-grid">
+            <div class="form-row" id="row-phone"><label>Phone *</label><input id="f-phone" type="tel" maxlength="16" placeholder="+1 (555) 000-0000"><span class="err-msg">Valid phone required</span></div>
+            <div class="form-row" id="row-email"><label>Email *</label><input id="f-email" type="email" placeholder="john@email.com"><span class="err-msg">Valid email required</span></div>
+          </div>
+          <button class="hf-btn hf-next" id="step1-next"><span>Next — Property Details</span></button>
         </div>
-        <div class="form-grid">
-          <div class="form-row" id="row-phone"><label>Phone *</label><input id="f-phone" type="tel" maxlength="16" placeholder="+1 (555) 000-0000"><span class="err-msg">Valid phone required</span></div>
-          <div class="form-row" id="row-email"><label>Email *</label><input id="f-email" type="email" placeholder="john@email.com"><span class="err-msg">Valid email required</span></div>
+        <div class="form-step" id="step-2" style="display:none;">
+          <div class="form-row" id="row-address"><label>Property Address *</label><input id="f-address" type="text" placeholder="123 Main St, City, State, ZIP"><span class="err-msg">Address required</span></div>
+          <div class="form-grid">
+            <div class="form-row" id="row-type"><label>Property Type *</label>
+              <select id="f-type"><option value="" disabled selected>Select type...</option><option>Single Family Home</option><option>Multi-Family</option><option>Ranch / Land</option><option>Condo / Townhouse</option><option>Commercial</option><option>Mobile Home</option></select>
+              <span class="err-msg">Please select</span></div>
+            <div class="form-row"><label>Timeline</label>
+              <select id="f-timeline"><option value="" disabled selected>How soon?</option><option>ASAP — Within 2 weeks</option><option>1–3 Months</option><option>3–6 Months</option><option>Just exploring</option></select></div>
+          </div>
+          <button class="hf-btn hf-next" id="step2-next"><span>Next — Final Details</span></button>
+          <button class="hf-btn hf-back" id="step2-back"><span>Back</span></button>
         </div>
-        <div class="form-row" id="row-address"><label>Property Address *</label><input id="f-address" type="text" placeholder="123 Main St, City, State, ZIP"><span class="err-msg">Address required</span></div>
-        <div class="form-grid">
-          <div class="form-row" id="row-type"><label>Property Type *</label>
-            <select id="f-type"><option value="" disabled selected>Select type...</option><option>Single Family Home</option><option>Multi-Family</option><option>Ranch / Land</option><option>Condo / Townhouse</option><option>Commercial</option><option>Mobile Home</option></select>
-            <span class="err-msg">Please select</span></div>
-          <div class="form-row"><label>Timeline</label>
-            <select id="f-timeline"><option value="" disabled selected>How soon?</option><option>ASAP — Within 2 weeks</option><option>1–3 Months</option><option>3–6 Months</option><option>Just exploring</option></select></div>
+        <div class="form-step" id="step-3" style="display:none;">
+          <div class="form-row"><label>Property Condition</label>
+            <select id="f-condition"><option value="" disabled selected>Select condition...</option><option>Move-in Ready</option><option>Needs Minor Repairs</option><option>Needs Major Repairs</option><option>Distressed / As-Is</option></select></div>
+          <div class="form-row"><label>Situation (Optional)</label><textarea id="f-situation" placeholder="Anything helps us serve you better..."></textarea></div>
+          <button class="hf-btn" id="hf-submit-btn"><span>Submit — Get My Free Offer</span></button>
+          <button class="hf-btn hf-back" id="step3-back"><span>Back</span></button>
         </div>
-        <div class="form-row"><label>Property Condition</label>
-          <select id="f-condition"><option value="" disabled selected>Select condition...</option><option>Move-in Ready</option><option>Needs Minor Repairs</option><option>Needs Major Repairs</option><option>Distressed / As-Is</option></select></div>
-        <div class="form-row"><label>Situation (Optional)</label><textarea id="f-situation" placeholder="Anything helps us serve you better..."></textarea></div>
-        <button class="hf-btn" id="hf-submit-btn"><span>Submit — Get My Free Offer</span></button>
         <div class="hf-note">🔒 100% Private &amp; Secure · No Obligation · No Spam</div>
       </div>
     </div>
@@ -1989,12 +2002,6 @@ footer::before{content:'';display:block;width:50px;height:2px;background:var(--r
                class="troops-image"
                style="width:100%; height: 440px; aspect-ratio:3/2; object-fit:cover;">
         </div>
-        <div class="troops-badge">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
-          </svg>
-        </div>
-        <div class="troops-badge-text">VETERAN SUPPORT</div>
         <div class="troops-flag-strip">
           <span></span><span></span><span></span><span></span><span></span>
         </div>
@@ -2447,6 +2454,73 @@ const hbg=document.getElementById('hamburger'),drw=document.getElementById('nav-
 hbg.addEventListener('click',()=>{hbg.classList.toggle('open');drw.classList.toggle('open');document.body.style.overflow=drw.classList.contains('open')?'hidden':''});
 drw.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{hbg.classList.remove('open');drw.classList.remove('open');document.body.style.overflow=''}));
 
+/* FORM STEPS */
+let currentStep = 1;
+const totalSteps = 3;
+function showStep(step) {
+  document.querySelectorAll('.form-step').forEach(s => s.style.display = 'none');
+  document.getElementById('step-' + step).style.display = 'block';
+  currentStep = step;
+}
+function validateStep(step) {
+  let ok = true;
+  if (step === 1) {
+    [['row-fname','f-fname',v=>v.length>=2],['row-lname','f-lname',v=>v.length>=2],
+     ['row-phone','f-phone',v=>/^[\d\s\+\-\(\)]{7,}$/.test(v)],['row-email','f-email',v=>/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)]
+    ].forEach(([rid,eid,fn])=>{
+      const row=document.getElementById(rid),el=document.getElementById(eid);
+      if(!row||!el)return;
+      const pass=fn(el.value.trim());
+      row.classList.toggle('has-err',!pass);el.classList.toggle('err',!pass);
+      if(!pass)ok=false;
+    });
+  } else if (step === 2) {
+    [['row-address','f-address',v=>v.length>=5],['row-type','f-type',v=>v!=='']].forEach(([rid,eid,fn])=>{
+      const row=document.getElementById(rid),el=document.getElementById(eid);
+      if(!row||!el)return;
+      const pass=fn(el.value.trim());
+      row.classList.toggle('has-err',!pass);el.classList.toggle('err',!pass);
+      if(!pass)ok=false;
+    });
+  }
+  return ok;
+}
+document.getElementById('step1-next').addEventListener('click', () => {
+  if (validateStep(1)) {
+    // Capture data for step 1
+    const data = {
+      fname: document.getElementById('f-fname').value,
+      lname: document.getElementById('f-lname').value,
+      phone: document.getElementById('f-phone').value,
+      email: document.getElementById('f-email').value,
+      step: 1
+    };
+    // Send partial data (assuming endpoint exists)
+    fetch('/api/lead', { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify(data) }).catch(() => {});
+    showStep(2);
+  } else {
+    document.querySelector('.form-row.has-err')?.scrollIntoView({behavior:'smooth',block:'center'});
+  }
+});
+document.getElementById('step2-next').addEventListener('click', () => {
+  if (validateStep(2)) {
+    // Capture data for step 2
+    const data = {
+      address: document.getElementById('f-address').value,
+      type: document.getElementById('f-type').value,
+      timeline: document.getElementById('f-timeline').value,
+      step: 2
+    };
+    // Send partial data
+    fetch('/api/lead', { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify(data) }).catch(() => {});
+    showStep(3);
+  } else {
+    document.querySelector('.form-row.has-err')?.scrollIntoView({behavior:'smooth',block:'center'});
+  }
+});
+document.getElementById('step2-back').addEventListener('click', () => showStep(1));
+document.getElementById('step3-back').addEventListener('click', () => showStep(2));
+
 /* FORM */
 function validateForm(){
   let ok=true;
@@ -2468,7 +2542,23 @@ function validateForm(){
   ['input','change'].forEach(ev=>el.addEventListener(ev,()=>{el.classList.remove('err');row.classList.remove('has-err')}));
 });
 document.getElementById('hf-submit-btn').addEventListener('click',()=>{
-  if(validateForm())openModal();
+  if(validateForm()){
+    // Send final data
+    const data = {
+      fname: document.getElementById('f-fname').value,
+      lname: document.getElementById('f-lname').value,
+      phone: document.getElementById('f-phone').value,
+      email: document.getElementById('f-email').value,
+      address: document.getElementById('f-address').value,
+      type: document.getElementById('f-type').value,
+      timeline: document.getElementById('f-timeline').value,
+      condition: document.getElementById('f-condition').value,
+      situation: document.getElementById('f-situation').value,
+      step: 3
+    };
+    fetch('/api/lead', { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify(data) }).catch(() => {});
+    openModal();
+  }
   else document.querySelector('.form-row.has-err')?.scrollIntoView({behavior:'smooth',block:'center'});
 });
 
@@ -2615,11 +2705,11 @@ document.addEventListener('DOMContentLoaded', function() {
     ['Nevada',        'M163,154L243,172L219,301L178,337L149,208Z',false],
     ['Idaho',         'M232,36L305,50L284,179L243,172L222,91Z',false],
     ['Montana',       'M244,39L391,60L385,134L293,123L241,53Z',false],
-    ['Wyoming',       'M293,123L383,134L377,209L281,198Z',false],
+    ['Wyoming',       'M293,123L383,134L377,209L281,198Z',true],
     ['Colorado',      'M309,202L406,211L401,287L299,276Z',false],
     ['Utah',          'M243,172L284,179L269,272L299,276L306,220L240,190Z',false],
     ['Arizona',       'M214,262L299,276L284,383L252,378L199,345Z',false],
-    ['New Mexico',    'M299,276L387,286L380,379L323,376L284,383Z',false],
+    ['New Mexico',    'M299,276L387,286L380,379L323,376L284,383Z',true],
     ['Texas',         'M386,295L515,346L516,425L466,499L433,487L409,423L376,435Z',false],
     ['Oklahoma',      'M387,286L514,289L515,346L428,352L386,295Z',false],
     ['Kansas',        'M405,230L510,233L511,289L401,287Z',false],
@@ -2657,8 +2747,8 @@ document.addEventListener('DOMContentLoaded', function() {
     ['Vermont',       'M785,104L810,98L821,139L795,146Z',false],
     ['New Hampshire', 'M794,96L818,89L829,129L804,136Z',false],
     ['Maine',         'M803,51L853,37L873,101L820,116Z',false],
-    ['Alaska',        'M106,431L173,439L195,548L149,553L101,558L89,510Z',false],
-    ['Hawaii',        'M225,492L312,548L312,492L248,492Z',false],
+    ['Alaska',        'M106,431L173,439L195,548L149,553L101,558L89,510Z',true],
+    ['Hawaii',        'M225,492L312,548L312,492L248,492Z',true],
   ];
   const STATE_ABBREV={'Alabama':'AL','Alaska':'AK','Arizona':'AZ','Arkansas':'AR','California':'CA','Colorado':'CO','Connecticut':'CT','Delaware':'DE','Florida':'FL','Georgia':'GA','Hawaii':'HI','Idaho':'ID','Illinois':'IL','Indiana':'IN','Iowa':'IA','Kansas':'KS','Kentucky':'KY','Louisiana':'LA','Maine':'ME','Maryland':'MD','Massachusetts':'MA','Michigan':'MI','Minnesota':'MN','Mississippi':'MS','Missouri':'MO','Montana':'MT','Nebraska':'NE','Nevada':'NV','New Hampshire':'NH','New Jersey':'NJ','New Mexico':'NM','New York':'NY','North Carolina':'NC','North Dakota':'ND','Ohio':'OH','Oklahoma':'OK','Oregon':'OR','Pennsylvania':'PA','Rhode Island':'RI','South Carolina':'SC','South Dakota':'SD','Tennessee':'TN','Texas':'TX','Utah':'UT','Vermont':'VT','Virginia':'VA','Washington':'WA','West Virginia':'WV','Wisconsin':'WI','Wyoming':'WY'};
   const STATE_CENTERS={'Washington':[183,55],'Oregon':[165,120],'California':[145,240],'Nevada':[205,230],'Idaho':[263,115],'Montana':[318,90],'Wyoming':[335,165],'Colorado':[355,248],'Utah':[268,228],'Arizona':[250,325],'New Mexico':[338,330],'Texas':[450,400],'Oklahoma':[453,318],'Kansas':[456,258],'Nebraska':[440,202],'South Dakota':[434,148],'North Dakota':[435,90],'Minnesota':[524,120],'Iowa':[526,194],'Missouri':[545,270],'Wisconsin':[576,148],'Illinois':[582,232],'Michigan':[622,148],'Indiana':[626,228],'Ohio':[678,215],'Kentucky':[640,270],'Tennessee':[640,304],'Arkansas':[546,332],'Louisiana':[562,420],'Mississippi':[588,378],'Alabama':[632,354],'Georgia':[686,354],'Florida':[694,450],'South Carolina':[718,340],'North Carolina':[726,296],'Virginia':[730,254],'Pennsylvania':[745,186],'New York':[756,148],'Maine':[840,80],'Alaska':[148,494],'Hawaii':[268,516]};
